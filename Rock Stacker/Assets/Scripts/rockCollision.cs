@@ -21,7 +21,7 @@ public class rockCollision : MonoBehaviour
     {
         if (!landed && (collision.gameObject.CompareTag("Rock") || collision.gameObject.CompareTag("BaseRock")))
         {
-            Debug.Log("Hello");
+            audioSource.Play();
             landed = true;
             
         }
