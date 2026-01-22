@@ -1,4 +1,6 @@
-## Game Journal Thing
+# Game Journal Thing
+
+## Make-A-Thing | 19-01-2026
 
 ### Idea: Rock Stacker 
 
@@ -95,16 +97,27 @@ So to solve this, you can manually control the camera with W/S or UP/DOWN arrows
   - I added in a rock counter so people can try to see how many rocks they can place 
     - Originally, I also wanted a height meter, but did not have time to implement it
 
-### Struggles
+# Make-A-Thing | 21-01-2026
+
+Technically I already wrote about it above, but essentially I just added audio when spawning rocks and when they collide. 
+As well as the game over sounds. 
+
+I originally wanted the collisions to make sounds, but the delay made it really uncomfortable. So having a spawning sound helps to make it less awkward.
+
+I also made each rock have a different sound. I did think about making the sounds randomized every time, but i feel like keeping them consistant between rock types is better.
+
+
+
+## Struggles
 - Most struggles come from not knowing the syntax. I mostly used AI as a way of googling this quickly.
-- Choosing the proper way of using inputs. There are many ways to do it, and i kepts mix and matching
+- Choosing the proper way of using inputs. There are many ways to do it, and I kept mix and matching
   them.
 - Audio sounds are slightly delayed
 - I am working on a VM, so I don't have direct access to the files I create on the actual computer
 - I accidentally made the large rock and small rock a prefab variant of the medium rock, so when I change stuff for the medium rock, it changes it for the others too. 
 This became kind of convenient sometimes.
 
-### Resources
+## Resources
 
 - Everything is made by me*
   - The rocks are technically colored Unity sprites
