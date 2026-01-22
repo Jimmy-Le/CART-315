@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4271757478033124977}
   - component: {fileID: 7693754607529203526}
   - component: {fileID: 218969719284108326}
-  - component: {fileID: 7675956005815052654}
   - component: {fileID: 5166776941962312695}
   m_Layer: 6
   m_Name: Medium Rock
@@ -172,18 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64a2ba6d6964dde1b72209fa13aaafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &7675956005815052654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2830160033530593624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64a2ba6d6964dde1b72209fa13aaafd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rockCollision
+  audioSource: {fileID: 5166776941962312695}
 --- !u!82 &5166776941962312695
 AudioSource:
   m_ObjectHideFlags: 0
@@ -196,7 +184,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f371cdaf9627fdd5682aed8859d00bc4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

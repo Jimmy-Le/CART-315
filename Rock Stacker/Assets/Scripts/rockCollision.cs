@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class rockCollision : MonoBehaviour
 {
+
+    public AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private bool landed = false;
     void Start()
@@ -19,8 +21,9 @@ public class rockCollision : MonoBehaviour
     {
         if (!landed && (collision.gameObject.CompareTag("Rock") || collision.gameObject.CompareTag("BaseRock")))
         {
-            Debug.Log("Rock collision");
+            Debug.Log("Hello");
             landed = true;
+            
         }
     }
 }
