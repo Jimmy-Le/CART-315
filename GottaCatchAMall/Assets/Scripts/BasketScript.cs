@@ -15,7 +15,7 @@ public class BasketScript : MonoBehaviour
     private InputAction move_action;
 
     // Properties
-    public float speed = 5f;
+    public float speed = 6f;
     public float score;
     private float limit = 9f;
     
