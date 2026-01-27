@@ -124,3 +124,67 @@ This became kind of convenient sometimes.
   - The sounds are made with MuseScore Studio and trimmed with Audacity
   - The game engine is Unity 6.3.4f1
   - The scripts were written in JetBrains' Rider
+
+-----------
+
+## Design Journal: Exploration Prototype 1 | 27-01-2026
+
+Alright, since we didn't really have a project to do, 
+I decided that I wanted to complete the Catch-A-Mall project, while using my own coding methods
+and respecting the original's design.
+
+### Movement and Input
+- Since I am somewhat experienced using Unity, I wanted to use the new Input System Package.
+  - It is quite easy, but again, I did struggle with the syntax on how to get data from the inputs.
+  - Essentially, there is an Input Action file which you can modify through the project settings that holds all the keybindings
+for a specific action. These bindings return value that you give them (left gives -1, right gives 1). You can then use these values to determine the direction
+that the player is moving towards.
+  - In the code, you need to find the action that you want :
+    ```
+    Using Unity.InputSystem; 
+    ...
+    
+    public InputActionAsset inputAction;         // Put the InputSystem_Actions file generated in here through the editor
+    private InputAction move_action;             // This will hold the input that we are getting (Left or Right)
+    
+    void Awake(){                                  // I think you can use Start() as well
+      move_action = inputAction.FindAction("Move") // "Move" is the name of the input that we want
+    }
+    
+    void Update(){
+      if(move_action.IsPressed()){
+       Debug.Log(move_action.ReadValue(Vector2).x)  // This is how you get the value of it, Vector2 is there because WASD is included in "Move" 
+      }
+    
+    }
+    ```
+  
+### Building Dropper Script
+- I basically did the same as the professor, but instead of using Sprite[], I used GameObject[] (Arrays of Prefabs)
+- This way, it would be more flexible to add different types of buildings later on 
+- This also avoids hardcoding building types as we can use prefab buildings with preset tags 
+- I did this to try to simplify the code and allow the possibility of updating it (I won't)
+
+
+### Buildings
+- Like I wrote earlier, I create prefabs for each building. It is lowkey redundant, but if we were to give different values to the buildings,
+we could modify the code to use the score of the object instead of +/- 1
+- And of course, the mall prefab gets the "Mall" tag and the others get the "NotaMall" tags in case we needed those in class
+
+### Something New and Fun
+- **CoRoutines**
+  - I did have some experience using CoRoutines, but I didn't really understand how they worked. 
+  - I previously used them for animations, since you can play / stop them.
+  - Based on this example, it seems like it just plays a sequence of events, and can recursively call itself to form a loop.
+  - I think this would be really good for pausing as well since CoRoutines can be stopped/destroyed
+- **TextMeshPro**
+  - I have used text before, but there were so many errors/changes get made in the git everytime you touch something
+  - This time, I wanted to fix these issues and I found that dynamic fonts are the problem
+    - To solve this, you simply need to create and use a Static font
+      - (I did ask AI how to fix this)
+
+### Today's Conclusion
+I basically finished the game based on what I can see posted in the professor's GitHub, 
+we'll see what we do further with this project in class.
+
+-----------------
