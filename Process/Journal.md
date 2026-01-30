@@ -141,7 +141,7 @@ for a specific action. These bindings return value that you give them (left give
 that the player is moving towards.
   - In the code, you need to find the action that you want :
     ```
-    Using Unity.InputSystem; 
+    Using UnityEngine.InputSystem; 
     ...
     
     public InputActionAsset inputAction;         // Put the InputSystem_Actions file generated in here through the editor
