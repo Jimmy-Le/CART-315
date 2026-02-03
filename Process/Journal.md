@@ -188,3 +188,145 @@ I basically finished the game based on what I can see posted in the professor's 
 we'll see what we do further with this project in class.
 
 -----------------
+
+# Exploration Prototype 2 | The Fellmonger | 30-01-2026
+
+This project is gonna be based on my experience at a Game Jam over the weekend!
+https://sh4rpsteel.itch.io/the-fellmonger
+
+
+## The Fellmonger: Day 1 | 30-01-2026
+
+Considering that the game jam officially started at 8:00 pm and most of us had to go home early to catch the bus/train, we decided that the first day will be focused on exploration and prototyping.
+
+The theme of this project was **The Hunt**
+
+
+### Initial Ideas
+- We considered a couple of ideas such as 
+  - Platformer
+  - Grocery store / food hunt
+  - Boss Rush (We ended up with this one)
+
+
+- We then tried to make a mood board to get an idea of what we want
+  - we were inspired by the binding of issac type gameplay and visuals (Insert Picture Here)
+  - We had some forest theme for like hunters
+  - We wanted a deer boss
+
+
+### Prototyping
+- I started working on a small lowfi implementation prototype that included
+  - Character movement
+  - Character attack
+  - Attack "movement"
+  - Enemies taking damage from attacks
+  - Field and borders
+
+![PrototypeGif](/Process/Images/Prototype.gif)
+*My laptop was on life support recording this
+
+
+### Thoughts 
+- It went very well, we got a good idea of what we wanted and that the programming side would also be possible (little did I know).
+
+
+## The Felmonger: Day 2 | 31-01-2026
+
+I don't really remember what happened, but things seemed to be going smoothly.
+The artists are working hard to create the background and characters, sound designer was making some music and sound effects, and our game designer was coming up with ideas and thematics of the game.
+
+I believe that I was writing out the scripts for the attacks.
+- The first attack was the skill which had 2 ideas
+  - either a Volley (Ashe w, iykyk)
+  - triple shot (We decided on this one)
+
+- The next thing was deciding enemy attacks. We had so many aspirations, but it was not possible for me to do most of them
+
+> --- Deer Attacks ---
+> Antler charge -> Glow white then attack vertically
+> Back leg kick -> Melee attack
+> Jump down and slam -> Small circle indicator
+> Summon horse? At half health
+
+- Based on the things here, we did not have time to create many assets or animations for them
+- There were also physical constraints such as the jumping one, where if in theory it jumps from the top of the screen, it might get blocked by the wall and softlock the game.
+- Same thing with antler charge where it originally attacked vertically, which doesn't make much sense if the player is on the sides.
+- Instead I made it antler charge into the player's current location.
+  - There were a lot of bugs where the deer would pause, then teleport at max speed to the player, killing them instantly. Other bugs made it get stuck from trying to follow the player and the position it was supposed to go towards. 
+
+
+- Unfortunately the deer boss was not the biggest issue. At this point in time, it was the end of the day, and we still did not design the dragon boss.
+  - It was 1 am by this point, and I was busy putting in the animations for the Deer and player, and I kept wondering what kind of boss attack we can do with the most minimal amount of assets, as the artists still need to design the dragon with less than 12 hours left.
+  - And so It was critical to find a way to make the battle engaging, without making the dragon move (so we don't have to make an animation for it)
+
+
+  > --- Dragon Attacks ---
+  > Dice roll at half health (random attack from every single option in the game (D6) + > maybe auto kills you on contact but is avoidable)
+  > Breathing fire (AOE) -> Chain reaction
+  > Moving Whirlwinds -> Chain reaction
+
+
+- These were the original idea, we had to incomporate dice decisions as a challenge, so I had to figure out how to make a dice attack.
+- Again, since there is no guarantee that the artists can draw and animate assets in time
+- I started prototyping some ideas (on paper)
+
+- ![dragon_prototype](/Process/Images/dragon_prototype.jpg)
+
+- The original idea was to have different effects for the dragon rolling a nat 1 and a nat 6, where 6 does a big damage attack and 1 healing the player.
+
+- What I basically did before passing out crying is make a square shoot a bunch of triangle based on a random number roll (Imagine the image below was in programming)
+
+![dragon_programming_prototype](/Process/Images/dragon_prototype_2.png) 
+
+
+### Afterthoughts
+- I ended the day at 2 am before passing out in the corner and catching a cold, but when I managed to get the programming done for one of the dragon attack, I had a glimmer of hope.
+
+- A really cool that that happened was the attacks from the "dragon" blocked and destroyed the arrows, making the game slightly more challenging by requiring the player to time their attacks or reposition better.
+
+- Some struggles that I had were Coroutines, since while the `WaitForSeconds()` function was still happening, it could be called again during that time, messing up some timing stuff. But I think I understand it better now.
+
+
+## The Felmonger: Day 3 - End | 01-02-2026
+
+This is the last day of the jam, I woke up at like 5 am shivering to the bone and bloodshot eyes. But I had to continue pushing.
+
+- I started to make the common game stuff like game over screen which allowed the player to restart, the logic to open the right wall after defeating a boss, creating a portal that leads to the next level.
+
+- I also wanted to create a special attack to give some variety to the dragon. We needed a strong "fireball" aoe attack, so for now, when the dragon rolls a 6, a big square appears and does 2 damage to the player, and slows them (we had an idea for a slowing ice breath at some point)
+
+![dragon_aoe](/Process/Images/dragon_aoe_attack.png)
+
+
+### Merge Conflicts
+
+- After my team started to come back on site, we manage to get a lot of work done, and they helped to integrate the sound and UI. However, errors kept popping up over and over again.
+
+ > Merge Conflicts Merge Conflicts Merge ConflictsMerge Conflicts Merge Conflicts Merge ConflictsMerge ConflictsMerge ConflictsMerge ConflictsMerge ConflictsMerge ConflictsMerge ConflictsMerge ConflictsMergeConflictsMergeConflictsMergeConflicts
+
+- The .Unity file of a scene kept changing everytime someone made a change (duh), but that kept getting conflicted from git. **To fix this, we used Rider to go through the file, and start accepting all the changes until it wasn't angry anymore.** The good news is that we can fix things quickly. The bad news is that sometimes, some people changes didn't go through because of it. 
+- This nearly costed us our audio, but fortunately there was an extension to the submission time and we managed to submit something pretty cool
+
+
+### Afterthoughts: The Finale
+I know that I yapped a lot about stuff that isn't just prototyping and exploring stuff, but since I did the gamejam, I wanted to use that opportunity to prototype in a realistic setting, even though the time to work on this was very short.
+
+It was very fun, Prototyping on the first day did help us a shit ton, since the artist team got to imagine what aesthetics we were going for, the game designer knew what kind of attacks and gameplay to do, and programming let me know what was possible and not possible. This lead to a very smooth-ish game development experience.
+
+### The Game :D
+https://sh4rpsteel.itch.io/the-fellmonger 
+
+![dear](/Process/Images/deer_final.png)
+![dragon1](/Process/Images/dragon_projectile.png)
+![dragon2](/Process/Images/dragon_horse.png)
+**oh yeah, we also had to include a horse in the game
+
+### Credits to my team
+- Game Designer: Ethan Armstrong
+- Environmmental Artist / UI Programmer: Arielle Wong
+- Character Design / 2D Artist: Owen Yang
+- Sound Designer: Hubert Sia
+- Lead Programmer: Jimmy Le (Me)
+![thumbsUp](/Process/Images/Emote.png)
+----- ---------
