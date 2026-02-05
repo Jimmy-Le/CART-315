@@ -191,7 +191,7 @@ we'll see what we do further with this project in class.
 
 # Exploration Prototype 2 | The Fellmonger | 30-01-2026
 
-This project is gonna be based on my experience at a Game Jam over the weekend!
+This project is gonna be based on my experience at a Game Jam over the weekend with Arielle, Ethan, Owen, and Hubert!
 https://sh4rpsteel.itch.io/the-fellmonger
 
 
