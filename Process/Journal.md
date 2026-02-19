@@ -481,11 +481,56 @@ If I were to actually work on this idea, I think after creating everything liste
 
 ---- --------
 
+# Exploration Prototype 4 | 12-02-2026
+
+For this week's exploration, I wanted to try to make an idea that I had after my game jam was over. 
+It is called Redact Those Philes! and basically you are given a list of words to redact, and you get penalties for redacting incorrect words and not redacting the requested word.
+But all of this is happening in a happy vibe workplace where you can put some fun stickers on the files.
+At the end of the day, you get money for not making mistakes and pay bills.
+
+## Exploration Prototype 4: Day 1 | 12-02-2026
+
+![Table](/Process/table.png)
+![EndOfDay](/Process/end_of_day.png)
+
+- These are some Look/Feel Prototypes that I drew so that I know the layout that I need to make.
+
+![RTPPrototype](/Process/rtp_prototype.png)
+
+- And this is a Implementation prototype that I quickly made to reflect the layout that I want.
+
+
+### End Of Day
+- There really wasn't much stuff that I worked on that day (mainly cause I did it during class time), but I am hoping to be able to make a working game by next thursday.
 
 
 
+## Exploration Prototype 4: Day 2 | 17-02-2026
+I continued working a bit on it in between my class. Unfortunately, Unity HUB wanted me to download a new version of Unity, so an Hour was spent waiting for it.
+
+But today I wanted to try to use text as an object and not as a UI element. I had to do a little research to get it to work as apparently a text object is considered a 3D object and not 2D.
+
+I also wanted to make the redaction, where a separate object that is hidden above the word will be enabled after getting clicked.
+I struggled a bit because I was trying to use OnMouseDown, but it wasn't registering it.
+
+Unfortunately I was not able to solve it that day.
+
+## Exploration Prototype 4: Day 3 | 19-02-2026
+My goal for today is to get the redaction feature working.
+
+- I first did some more research about how to detect mouse clicks and ended up by finding out about Raycasting which is basically having an Object project an invisible line towards a point, and the first object with a collider will be returned.
+  - In my case, the mouse location would be the object that does the raycasting towards the words.
+  - I did take a lot of time going back and forth between debugging and thinking about how to implement stuff as well.
+- The next thing was to connect the click with enabling the black bar, which was quickly done since the code was ready from day 2.
+
+![redaction](/Process/redaction.gif)
+
+- After this, I started working on getting words from a txt file so that I can randomly generate them and changing the text when the word is spawned
+  - To do this, I created a Singleton game manager instance like in class, and have that read a txt file and store the words.
+  - I made a function to generate words that gets called by the words on Start
 
 
+and that was basically it for today, hopefully I can grind it all tmr.
 
 
 
