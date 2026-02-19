@@ -1,28 +1,28 @@
 using UnityEngine;
-using System;
+using System.Linq;
+using System.Collections.Generic;
 
-
-public class WordSpawnerScript : MonoBehaviour
+public class BannedWordSpawnerScript : MonoBehaviour
 {
-    
+ 
     [SerializeField] public GameObject wordPrefab;
     [SerializeField] public Transform spawnLocation;
 
     [SerializeField] private int rows;
-    private int baseRows = 5;
-    private int maxRows = 18;
-    
-    [SerializeField] private int columns = 4;
+    [SerializeField] private int columns = 1;
 
     private float widthBetween = 1f;
     private float heightBetween = 0.3f;
 
     private float margin = 0.2f;
     private float alternateMargin = 0.4f;
+
+    private List<int> bannedWordIDs;
     
     void Start()
     {
-        rows = Math.Min(baseRows * GameManagerScript.instance.level, maxRows);
+        bannedWordIDs = GameManagerScript.instance.wordsToRedactID;
+        rows = bannedWordIDs.Count;
         SpawnWords();
     }
 
@@ -42,6 +42,10 @@ public class WordSpawnerScript : MonoBehaviour
                 float yPos = this.transform.position.y - (j * heightBetween);
                 
                 GameObject newWord = Instantiate(wordPrefab, new Vector3(xPos,yPos,0), transform.rotation);
+                
+                newWord.GetComponent<WordSetupScript>().SetWord(bannedWordIDs[j]);
+                newWord.GetComponent<RedactionScript>().SetRedactable(false);
+                
                 newWord.transform.SetParent(null);
                 newWord.transform.localScale = Vector3.one;
                 newWord.transform.SetParent(spawnLocation);

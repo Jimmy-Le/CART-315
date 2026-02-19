@@ -6,10 +6,23 @@ public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript instance;
     
+
+	// Words 
     public string[] words;
-	public List<string> wordsToRedact = new List<string>();
-    
+	public List<int> wordsToRedactID = new List<int>(); 
     private string filename = "word_list";
+	private int baseWords = 2;
+	private int maxWords = 6;
+
+	// Money Stats
+	public float money = 100f;
+	public float penalty = -10f;
+
+	// Game Stats
+	public int level = 1;
+	public float pageDuration = 60f;
+	
+	
 
     void Awake()
     {
@@ -46,21 +59,24 @@ public class GameManagerScript : MonoBehaviour
 
 	public void GenerateRedactionWord()
 	{
-		string redactionWord;
+		int redactionWordID;
 		
 		do {
-			redactionWord = GetWord(GenerateWordIndex());
-		} while (wordsToRedact.Contains(redactionWord));
+			redactionWordID = GenerateWordIndex();
+		} while (wordsToRedactID.Contains(redactionWordID));
 
-		wordsToRedact.Add(redactionWord);
+		wordsToRedactID.Add(redactionWordID);
 	}
 
 	public void newDay()
 	{
-		wordsToRedact.Clear();
-		GenerateRedactionWord();
-		GenerateRedactionWord();
-		GenerateRedactionWord();
+		wordsToRedactID.Clear();
+		int maxBannedWords = System.Math.Min(maxWords, baseWords + (int) System.Math.Ceiling((double) (level / 2)));
+
+		for(int i = 0; i < maxBannedWords; i++)
+		{
+			GenerateRedactionWord();
+		}
 	}
     
     

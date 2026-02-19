@@ -23,5 +23,6 @@ public class WordSetupScript : MonoBehaviour
 		wordText.text = wordUsed;
 	}
 
+
 	
 }
