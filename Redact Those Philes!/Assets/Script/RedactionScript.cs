@@ -4,6 +4,8 @@ public class RedactionScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private SpriteRenderer blackSquare;
+    private bool isClicked = false;
+    private bool isRedactable = true;
     
     
     void Start()
@@ -19,7 +21,17 @@ public class RedactionScript : MonoBehaviour
 
     public void OnClicked()
     {
-        blackSquare.enabled = true;
+        if (!isClicked && isRedactable)
+        {
+            blackSquare.enabled = true;
+            isClicked = true;
+            // Call the points function
+        }
+        
+    }
+    public void SetRedactable(bool value)
+    {
+        isRedactable = value;
     }
 }
     

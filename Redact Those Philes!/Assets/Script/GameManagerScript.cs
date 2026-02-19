@@ -1,10 +1,13 @@
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript instance;
     
     public string[] words;
+	public List<string> wordsToRedact = new List<string>();
     
     private string filename = "word_list";
 
@@ -13,6 +16,7 @@ public class GameManagerScript : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
         ScrapeWords();
+		newDay();
     }
 
     public void ScrapeWords()
@@ -21,10 +25,7 @@ public class GameManagerScript : MonoBehaviour
         if (textFile != null)
         {
             string content = textFile.text;
-
             words = content.Split('\n');
-            foreach (string line in words)
-                Debug.Log(line.Trim());
         }
         else
         {
@@ -32,11 +33,35 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
-    public string GenerateWord()
+    public int GenerateWordIndex()
     {
         int randomIndex = Random.Range(0, words.Length);
-        return words[randomIndex];
+        return randomIndex;
     }
+
+	public string GetWord(int wordID)
+	{
+		return words[wordID];
+	}
+
+	public void GenerateRedactionWord()
+	{
+		string redactionWord;
+		
+		do {
+			redactionWord = GetWord(GenerateWordIndex());
+		} while (wordsToRedact.Contains(redactionWord));
+
+		wordsToRedact.Add(redactionWord);
+	}
+
+	public void newDay()
+	{
+		wordsToRedact.Clear();
+		GenerateRedactionWord();
+		GenerateRedactionWord();
+		GenerateRedactionWord();
+	}
     
     
     

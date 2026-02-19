@@ -490,8 +490,8 @@ At the end of the day, you get money for not making mistakes and pay bills.
 
 ## Exploration Prototype 4: Day 1 | 12-02-2026
 
-![Table](/Process/table.png)
-![EndOfDay](/Process/end_of_day.png)
+![Table](/Process/Images/table.png)
+![EndOfDay](/Process/Images/end_of_day.png)
 
 - These are some Look/Feel Prototypes that I drew so that I know the layout that I need to make.
 
@@ -515,7 +515,7 @@ I struggled a bit because I was trying to use OnMouseDown, but it wasn't registe
 
 Unfortunately I was not able to solve it that day.
 
-## Exploration Prototype 4: Day 3 | 19-02-2026
+## Exploration Prototype 4: Day 3 | 18-02-2026
 My goal for today is to get the redaction feature working.
 
 - I first did some more research about how to detect mouse clicks and ended up by finding out about Raycasting which is basically having an Object project an invisible line towards a point, and the first object with a collider will be returned.
@@ -523,7 +523,7 @@ My goal for today is to get the redaction feature working.
   - I did take a lot of time going back and forth between debugging and thinking about how to implement stuff as well.
 - The next thing was to connect the click with enabling the black bar, which was quickly done since the code was ready from day 2.
 
-![redaction](/Process/redaction.gif)
+![redaction](/Process/Images/redaction.gif)
 
 - After this, I started working on getting words from a txt file so that I can randomly generate them and changing the text when the word is spawned
   - To do this, I created a Singleton game manager instance like in class, and have that read a txt file and store the words.
@@ -531,6 +531,36 @@ My goal for today is to get the redaction feature working.
 
 
 and that was basically it for today, hopefully I can grind it all tmr.
+
+# Exploration Prototype 4: Day 4 | 19-02-2026
+My plan for today is to create a spawner that will fill up the page with words.
+
+- The first thing I thought about was the brick breaker game and how we can generate rows and columns of objects. So I stole that.
+- One issue that popped up was that the size of my words were waaaay bigger than the prefab. (I did not take a picture of this)
+  - After ChatGPTing my problem, It turns out that the issue is that the scale of the prefab was inheriting the parent (where it spawns inside)
+  - To solve this, I simply had to remove the parent after initializing it by doing `newWord.transform.SetParent(null);`, then setting it back to whatever parent object that I want it stored in.
+
+![redactionPage](/Process/Images/redacted_file.png)
+
+- I then ADHD my way into setting up stuff for the future such as
+  - Creating a list of words to redact, which we can compare the clicked word 
+    - And while writting this I just realized that I needed a way to check if a player did not redact a redaction word.
+      - The way I would probably do this to add the spawned word into a list, then loop through the list and find all the word that contains the banned word, then loop through to see if a isRedacted boolean was triggered.
+      - I will probably have to optimize this later
+    - I created a function that will generate an index that correspond to a word so that it can be used to compare words quickly
+    - I created a function that will convert the index into the word
+    - I created a function that will generate a redaction word
+      - Which I then created a function that will clear out the list of redaction words and generate 3 of them to use at the start of the game.
+
+- Essentially that was it at this time (before submission).
+
+### Afterthought
+
+I have grown attached to this idea so I would like to continue this project for the rest of whatever. And I won't take no for an answer :)
+
+I do promise to polish it up and add more features and do whatever requirements we need.
+
+-------------- 
 
 
 

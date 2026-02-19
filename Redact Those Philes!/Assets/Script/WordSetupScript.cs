@@ -6,17 +6,22 @@ public class WordSetupScript : MonoBehaviour
     [SerializeField] public TMP_Text wordText;
 
     public string wordUsed;
+	public int wordID;
     
     
     void Start()
     {
-        wordUsed = GameManagerScript.instance.GenerateWord();
+        wordID = GameManagerScript.instance.GenerateWordIndex();
+		wordUsed = GameManagerScript.instance.GetWord(wordID);
         wordText.text =  wordUsed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void SetWord(int newWordID)
+	{
+		wordID = newWordID;
+		wordUsed = GameManagerScript.instance.GetWord(wordID);
+		wordText.text = wordUsed;
+	}
+
+	
 }
