@@ -562,6 +562,80 @@ I do promise to polish it up and add more features and do whatever requirements 
 
 -------------- 
 
+# Game Analysis | 23-02-2026
+
+The game that I will talk about is an old MMORPG loosely based on Celtic and Irish mythology by Nexon and Devcat is called Mabinogi.
+
+![Mabinogi](/Process/Images/mabinogi.jpg)
+
+## What I find Interesting
+
+Mabinogi is not like other MMOs. Most MMOs focuses on combat or questing, while mabinogi has a lot more emphasis on "Slice of Life" gameplay. It still has combat, main story quest and there are classes called "Talents", but you can switch between them at anytime by equiping different gear. This becomes pertinant because you can have Life Talents as your "main" class such as Blacksmithing, Tailoring, Cooking, Adventuring, etc. This means that you don't need to engage in the combat aspect to play the game or you can find other people to accompany you to get materials.
+
+![MabinogiTalents](/Process/Images/mabinogi_talents.jpg)
+
+On top of that, there are other features of the game that promote doing stuff outside of combat. One thing is the Bard Bulletin Board, where players can use their Music Composition skill and compose Music using Music Macro Language (MML) for other players to perform. Players can then start a jam and have other players join in with their own instrument and create a symphony. With this feature, every 3-4 months there is a group of volunteer Bards that organize a whole concert featuring popular game / anime music with "cosplay" and props to support it.
+
+![MabinogiComposition](/Process/Images/mabinogi_composition.webp)
+![MabinogiBardBoard](/Process/Images/mabinogi_bard_board.png)
+![MabinogiJam](/Process/Images/mabinogi_jam.gif)
+
+There is also a whole MabiNovel feature that few people use, but essentially you can collect NPC books and create a visual novel book inside the game for other players to read using the NPCs collected as the performing characters. 
+
+![MabinogiMabiNovel](/Process/Images/mabinogi_mabinovel.jpeg)
+
+## Where They Have Failed
+
+Mabinogi is in the process of going through a game engine update to Unreal Engine 5, as such there are some changes that are attempting to modernize the game. While some of the changes are good, they strip away the identity of the game.
+
+![MabinogiEternity](/Process/Images/mabinogi_eternity.gif)
+
+There was a mid-game dungeon that was pretty difficult to clear, but it was sort of a benchmark dungeon that beginner players used to determine how strong they were, and it was satisfying to be able to clear it. As they started rolling out changes to the dungeon system to modernize it, they made it very easy to clear, cutting content from 20-ish minutes to clear to less than 2 minutes. This is good as it allowed players with less time to play, but the difficulty became very unsatisfying. 
+
+The major downside is that the next hardest content is too hard and has limited entry. As such, if you try to learn the dungeon and fail, you will get locked out of an attempt. This also disuades stronger player from playing with beginners as they will be punished for it.
+
+## What Ideas / Techniques I Should Borrow
+
+The main idea that I like from mabinogi, is that it tries to cater to every type of gameplay. Whether you like fashion, crafting, home-building, combat, questing, gathering, trading, exploring, music, socializing, roleplaying, etc, there is content that you can do and it doesn't feel like a waste of time as you are rewarded for doing these activities. 
+- So for my future games, I would try to avoid having only 1 fixed solution way to play a game. For a combat-focused game, I think it would be important to have different types of combat-styles like ranged, melee, defense, support, poisons, etc.
+
+The idea that I will try to avoid is having a low difficulty. While I like the idea of having a stress-free environment, people will end up getting unsatisfied if they can clear the content easily. I have seen this happen with my game jam, where we lowered the difficulty out of a fear that the judges won't be able to clear the game in the allocated time, which resulted in them clearing too quickly and running out of content.
+
+- So I will be trying to encorporate more levels of progressively higher difficulty to leave the player satified and have a challenge that they can strive for.
+
+### Bonus Mabinogi Propaganda
+The mabinogi devs working on Project Eternity (Unreal Engine Update) are also making some dev blogs where they write out what they are working on, what works and doesn't work and stuff, similar to what we are doing :D
+
+If you are interested feel free to read some entries!
+https://www.nexon.com/mabinogi/micro-site/eternity
+
+If you are feeling overwhelmed, here is one of the blogs that I find really interesting!
+https://www.nexon.com/mabinogi/micro-site/eternity/news/18146
+
+-------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
