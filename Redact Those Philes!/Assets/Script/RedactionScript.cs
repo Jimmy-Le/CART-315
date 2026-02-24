@@ -33,5 +33,11 @@ public class RedactionScript : MonoBehaviour
     {
         isRedactable = value;
     }
+
+	public bool IsRedacted()
+	{
+		return (isRedactable && isClicked);
+	}
+
 }
     

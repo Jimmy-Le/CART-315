@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Word
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -53,6 +54,9 @@ TagManager:
     locked: 0
   - name: Sticker
     uniqueID: 1506145175
+    locked: 0
+  - name: Buttons and UI
+    uniqueID: 1858722845
     locked: 0
   m_RenderingLayers:
   - Default

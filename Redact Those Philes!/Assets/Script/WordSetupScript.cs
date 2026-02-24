@@ -9,7 +9,7 @@ public class WordSetupScript : MonoBehaviour
 	public int wordID;
     
     
-    void Start()
+    void Awake()
     {
         wordID = GameManagerScript.instance.GenerateWordIndex();
 		wordUsed = GameManagerScript.instance.GetWord(wordID);

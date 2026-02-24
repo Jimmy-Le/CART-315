@@ -21,13 +21,20 @@ public class BannedWordSpawnerScript : MonoBehaviour
     
     void Start()
     {
-        bannedWordIDs = GameManagerScript.instance.wordsToRedactID;
-        rows = bannedWordIDs.Count;
+        
         SpawnWords();
     }
 
+	public void UpdateInformation()
+	{
+		bannedWordIDs = GameManagerScript.instance.wordsToRedactID;
+        rows = bannedWordIDs.Count;
+	}
+
+
     public void SpawnWords()
     {
+		UpdateInformation();
         for (int i = 0; i < columns; i++)
         {
             for (int j = 0; j < rows; j++)
@@ -49,6 +56,7 @@ public class BannedWordSpawnerScript : MonoBehaviour
                 newWord.transform.SetParent(null);
                 newWord.transform.localScale = Vector3.one;
                 newWord.transform.SetParent(spawnLocation);
+				newWord.tag = "Banned Words";
             }
             
         }
