@@ -666,7 +666,7 @@ The goal of the characters are to represent an instrument in the most perverse w
 ![Cello](/Process/Images/playmytune_cello.png)
 ![Frog](/Process/Images/playmytune_frog.png)
 
-You can eventually hire characters to work at your shop, and view information about them. You can choose who you hire based on what station or attribute you need. These
+You can eventually hire characters to work at your shop, and view information about them. You can choose who you hire based on what station or attribute you need. These attribute affect where you can place the and bonus rewards when they match the required attribute.
 
 ![Hire](/Process/Images/playmytune_hire.png)
 ![CelloInfo](/Process/Images/playmytune_info_cello.png)
