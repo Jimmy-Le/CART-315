@@ -562,16 +562,134 @@ I do promise to polish it up and add more features and do whatever requirements 
 
 -------------- 
 
+# Game Analysis | 23-02-2026
 
+The game that I will talk about is an old MMORPG loosely based on Celtic and Irish mythology by Nexon and Devcat is called Mabinogi.
 
+![Mabinogi](/Process/Images/mabinogi.jpg)
 
+## What I find Interesting
 
+Mabinogi is not like other MMOs. Most MMOs focuses on combat or questing, while mabinogi has a lot more emphasis on "Slice of Life" gameplay. It still has combat, main story quest and there are classes called "Talents", but you can switch between them at anytime by equiping different gear. This becomes pertinant because you can have Life Talents as your "main" class such as Blacksmithing, Tailoring, Cooking, Adventuring, etc. This means that you don't need to engage in the combat aspect to play the game or you can find other people to accompany you to get materials.
 
+![MabinogiTalents](/Process/Images/mabinogi_talents.jpg)
 
+On top of that, there are other features of the game that promote doing stuff outside of combat. One thing is the Bard Bulletin Board, where players can use their Music Composition skill and compose Music using Music Macro Language (MML) for other players to perform. Players can then start a jam and have other players join in with their own instrument and create a symphony. With this feature, every 3-4 months there is a group of volunteer Bards that organize a whole concert featuring popular game / anime music with "cosplay" and props to support it.
 
+![MabinogiComposition](/Process/Images/mabinogi_composition.webp)
+![MabinogiBardBoard](/Process/Images/mabinogi_bard_board.png)
+![MabinogiJam](/Process/Images/mabinogi_jam.gif)
 
+There is also a whole MabiNovel feature that few people use, but essentially you can collect NPC books and create a visual novel book inside the game for other players to read using the NPCs collected as the performing characters. 
 
+![MabinogiMabiNovel](/Process/Images/mabinogi_mabinovel.jpeg)
 
+## Where They Have Failed
 
+Mabinogi is in the process of going through a game engine update to Unreal Engine 5, as such there are some changes that are attempting to modernize the game. While some of the changes are good, they strip away the identity of the game.
 
+![MabinogiEternity](/Process/Images/mabinogi_eternity.gif)
 
+There was a mid-game dungeon that was pretty difficult to clear, but it was sort of a benchmark dungeon that beginner players used to determine how strong they were, and it was satisfying to be able to clear it. As they started rolling out changes to the dungeon system to modernize it, they made it very easy to clear, cutting content from 20-ish minutes to clear to less than 2 minutes. This is good as it allowed players with less time to play, but the difficulty became very unsatisfying. 
+
+The major downside is that the next hardest content is too hard and has limited entry. As such, if you try to learn the dungeon and fail, you will get locked out of an attempt. This also disuades stronger player from playing with beginners as they will be punished for it.
+
+## What Ideas / Techniques I Should Borrow
+
+The main idea that I like from mabinogi, is that it tries to cater to every type of gameplay. Whether you like fashion, crafting, home-building, combat, questing, gathering, trading, exploring, music, socializing, roleplaying, etc, there is content that you can do and it doesn't feel like a waste of time as you are rewarded for doing these activities. 
+- So for my future games, I would try to avoid having only 1 fixed solution way to play a game. For a combat-focused game, I think it would be important to have different types of combat-styles like ranged, melee, defense, support, poisons, etc.
+
+The idea that I will try to avoid is having a low difficulty. While I like the idea of having a stress-free environment, people will end up getting unsatisfied if they can clear the content easily. I have seen this happen with my game jam, where we lowered the difficulty out of a fear that the judges won't be able to clear the game in the allocated time, which resulted in them clearing too quickly and running out of content.
+
+- So I will be trying to encorporate more levels of progressively higher difficulty to leave the player satified and have a challenge that they can strive for.
+
+### Bonus Mabinogi Propaganda
+The mabinogi devs working on Project Eternity (Unreal Engine Update) are also making some dev blogs where they write out what they are working on, what works and doesn't work and stuff, similar to what we are doing :D
+
+If you are interested feel free to read some entries!
+https://www.nexon.com/mabinogi/micro-site/eternity
+
+If you are feeling overwhelmed, here is one of the blogs that I find really interesting!
+https://www.nexon.com/mabinogi/micro-site/eternity/news/18146
+
+-----------
+
+# Iterative Prototyping 1 | 19-02-2026
+
+I know that the instructions say to talk about 3 ideas discussed during the ideation process, but in this week's post, I will focus on the one that stood out to me.
+
+## Play My Tune
+
+I have decided to name this game idea "Play My Tune" and this idea came about when I was sharing ideas with Bianca Gauthier. Our words were Instruments and Bills. The first idea was about busking for money, but then I started thinking about opening up an instrument store. Then with our previous ideas about Island Dating (Traveling from island to island, finding out what they like and trying to match them together), what if we make it a whore house?
+
+It was originally a joke but instruments fit so well into all the innuendos about sex work. We kept coming up with instruments and dirty wording about it, and it kept making more sense. Considering that HuniePop / HunieCam got really popular because it was very controversial, our idea would probably do really well on the market.
+
+## Core Idea
+
+Similar to HuniePop or HunieCam, you are essentially operating a brothel, but for instruments. Your goal is to pay back some debt, and then make as much money as possible. The instruments are humanized(?) and there is a lot of inuendos and double entendres, but the game should be somewhat PG. There are different sections for your Instruments to work for, and you eventually build up your "shop".
+
+## Characters
+
+The goal of the characters are to represent an instrument in the most perverse way and to show the sterotypical tropes that one might find online. You may find this to be very controversial, but if we objectify everybody equally it should be fine (probably).
+
+- Drums: Masochist (Likes to get hit)
+- Piano: Likes to be played by multiple people at the same time (Duets)
+- Frog Percussion: Abs + pole dancer (The abs represent the frogs back thingees)
+- Cello: Curvy
+- Church Organ: Nun
+- Recorder: Lolita (Everone's first instrument) She can only work as a server*
+- Mandolin: Chinese Aesthetic
+- Harmonica: American
+- Banjo: YeeHaw American
+- Bagpipes: Scottish and speaks giberish
+- Violin: Classy / Seductive
+- Guitar: Likes to get fingered
+- Harp: Greek Goddess vibes
+- Base: Dominant
+- French Horn: Larger and French
+- Flute: Likes to be blown
+- Maracas: Twins
+- Ukelele: Innocent
+- Melodica: **Legal** Japanese School Girl
+- Cymbals: Loud
+- Triangle: Tsundere
+- Clarinet: Nerd
+- Theremin: Kuudere / Does not like to be touched
+- Saxaphone: In charge of the Phone Sax department
+- Otamatone: Yandere
+- Chimes: Elegant
+- Pan Flute: Is fine with anybody
+- Marimba: Office worker with a phone
+- Keyboard: Roleplay (Can immitate other instruments)
+- Bowed / Instruments with a stick: Pole Dancers
+
+![Cello](/Process/Images/playmytune_cello.png)
+![Frog](/Process/Images/playmytune_frog.png)
+
+You can eventually hire characters to work at your shop, and view information about them. You can choose who you hire based on what station or attribute you need. These attribute affect where you can place the and bonus rewards when they match the required attribute.
+
+![Hire](/Process/Images/playmytune_hire.png)
+![CelloInfo](/Process/Images/playmytune_info_cello.png)
+![KeyboardInfo](/Process/Images/playmytune_info_piano.png)
+
+## Game Mechanics
+
+Your shop is a mix of a bar / instrument rental shop. Eventually you will unlock the Operation rooms where you can host different services that will provide you with more money. Here are some events that are mapped to some lewd counterparts.
+
+![BarRoom](/Process/Images/playmytune_room_main.png)
+![OperationRoom](/Process/Images/playmytune_room_operation.png)
+
+- Live Performances: Cam shows / Livestream of the instruments playing their respective instrument
+- Instrument Rental: Escorting, Some customers might want to rent out some instruments with certain preferences
+- Phone Sax: Phone Sex, People will call the characters in these posts and make passive income.
+- Entertainers: People that perform on stage or entertain patrons at their seats
+- Host / Hostest: People that serve food / drinks
+- Orchestras: Orgies but professional, you can select multiple characters to participate and get rewards back later.
+
+![CamShow](/Process/Images/playmytune_liveperformance.png)
+![Rent](/Process/Images/playmytune_rent.png)
+![Orchestra](/Process/Images/playmytune_orchestra.png)
+
+## Conclusion
+
+This idea is lowkey very good but I don't think it will be executed anytime soon. I might one day come back to this idea.
