@@ -24,8 +24,12 @@ public class GameManagerScript : MonoBehaviour
 	private int maxWords = 6;
 
 	// Money Stats
-	public float money = 100f;
-	public float penalty = -10f;
+	public float balance = 200f;
+	public float addToBalance = 0f;
+	public float penalty = -20f;
+	public float pay = 10f;
+	public float donations = 0f;
+	public float bills = -100f;
 
 	// Game Stats
 	public int level = 0;
@@ -110,7 +114,14 @@ public class GameManagerScript : MonoBehaviour
 	public void NewDay()
 	{
 		ClearBannedWords();
+		balance += addToBalance;
 		pageCounter = 0;
+		addToBalance = 0;
+		mistakes = 0;
+		correctWords = 0;
+		donations = 0;
+		
+		
 		timer = pageDuration;
 
 		level++;
@@ -160,8 +171,10 @@ public class GameManagerScript : MonoBehaviour
 
 			}
 		}
-
+		
 	}
+
+
 
 	public void NewFile()
 	{
@@ -181,14 +194,22 @@ public class GameManagerScript : MonoBehaviour
 			pageCounter++;
 			UIScript.instance.UpdatePages();
 		}
+		// 10 rounds have passed
 		else
 		{
 			activeFile = null;
 			timeStarted = false;
 			Debug.Log("The Day Has Ended!");
-			NewDay();
+			CalculateProfit();
+			SummaryScript.instance.OpenSummaryUI();
+			// NewDay();
 		}
 
+	}
+
+	public void CalculateProfit()
+	{
+		addToBalance = (pay * correctWords) + (penalty * mistakes) + donations + bills; 
 	}
 
 	public void ClearBannedWords()

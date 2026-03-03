@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Word
   - UI
+  - Banned Words
   layers:
   - Default
   - TransparentFX

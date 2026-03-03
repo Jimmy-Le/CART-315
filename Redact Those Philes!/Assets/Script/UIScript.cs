@@ -44,5 +44,6 @@ public class UIScript : MonoBehaviour
         pageIndicator.text = GameManagerScript.instance.pageCounter + "/" + GameManagerScript.instance.pageMax + " Pages";
     }
     
+	
     
 }
