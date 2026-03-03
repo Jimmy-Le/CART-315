@@ -9,16 +9,16 @@ public class WordSpawnerScript : MonoBehaviour
     [SerializeField] public Transform spawnLocation;
 
     [SerializeField] private int rows;
-    private int baseRows = 5;
-    private int maxRows = 18;
+    private int baseRows = 4;
+    private int maxRows = 10;
     
     [SerializeField] private int columns = 4;
 
-    private float widthBetween = 1f;
-    private float heightBetween = 0.3f;
+    private float widthBetween = 1.3f;
+    private float heightBetween = 0.5f;
 
-    private float margin = 0.2f;
-    private float alternateMargin = 0.4f;
+    private float margin = 0.1f;
+    private float alternateMargin = 0.2f;
     
     void Start()
     {

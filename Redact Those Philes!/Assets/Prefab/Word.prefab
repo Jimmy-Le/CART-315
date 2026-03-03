@@ -110,7 +110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: aaaa
+  m_text: strawberry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 547a5d6818757ae5d90cf03795561ae7, type: 2}
   m_sharedMaterial: {fileID: -9026199734631746921, guid: 547a5d6818757ae5d90cf03795561ae7, type: 2}
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
-  m_fontSizeBase: 2
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 2
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.18508148, y: 0, z: -0.36343288, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -219,7 +219,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0015209913, y: -0.012929082}
+  m_Offset: {x: 0.03325188, y: -0.0118073225}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -229,7 +229,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9726207, y: 0.25619626}
+  m_Size: {x: 1.4168165, y: 0.280874}
   m_EdgeRadius: 0
 --- !u!114 &3194884439560409095
 MonoBehaviour:
@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WordSetupScript
   wordText: {fileID: 9058590787416441390}
   wordUsed: 
+  wordID: 0
 --- !u!1 &7813859063820756101
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0528, y: -0.0292}
+  m_SizeDelta: {x: 1.6474, y: 1.2796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &5275516458109491051
 SpriteRenderer:

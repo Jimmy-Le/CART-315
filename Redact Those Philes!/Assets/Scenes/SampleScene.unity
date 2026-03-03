@@ -1132,8 +1132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: -60}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 121.01819, y: -76.539}
+  m_SizeDelta: {x: 177.9637, y: 63.0779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579499279
 MonoBehaviour:
@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -265.7351, y: 0, z: 0, w: -29.941895}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3728,16 +3728,16 @@ MonoBehaviour:
   wordsToRedactIllegallyID: 
   balance: 200
   addToBalance: 0
-  penalty: -10
+  penalty: -20
   pay: 10
   donations: 0
-  bills: -100
+  bills: -50
   level: 0
   pageDuration: 60
   timer: 60
   timeStarted: 0
   pageCounter: 0
-  pageMax: 10
+  pageMax: 5
   correctWords: 0
   mistakes: 0
   corruptionLevel: 0

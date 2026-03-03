@@ -38,7 +38,9 @@ public class GameManagerScript : MonoBehaviour
 	public bool timeStarted = false;
 	
 	public int pageCounter = 0;
-	public int pageMax = 10;
+	public int pageMax = 5;
+	public int pageLimit = 10;
+	public int pageBase = 5;
 	
 	// Player Stats
 	public int correctWords = 0;
@@ -46,6 +48,17 @@ public class GameManagerScript : MonoBehaviour
 	public int corruptionLevel = 0;
 	public bool isCorrupted = false;
 	public bool corruptionMistakes = false;
+	
+	// World Events
+	private int worldEvents = 6;
+	public int currentWorldEvent = 0;
+	
+	// 0: No Event
+	// 1: Dow is over 50000, no penalty is applied
+	// 2: Being investigated, Double penalties for mistakes
+	// 3: Government Shutdown, No Pay
+	// 4: Tariff Money, Double Pay
+	// 5: Deadline is approaching, Take as much time as you need, page Timer set to 999f
 	
 	
 
@@ -128,6 +141,11 @@ public class GameManagerScript : MonoBehaviour
 		UIScript.instance.UpdateLevel();
 		
 		int maxBannedWords = System.Math.Min(maxWords, baseWords + (int) System.Math.Ceiling((double) (level / 2)));
+		pageMax = System.Math.Min(pageLimit, pageBase + (int)System.Math.Ceiling((double)(level / 3)));
+		if (level >= 3)
+		{
+			SetUpEvents();
+		}
 
 		for(int i = 0; i < maxBannedWords; i++)
 		{
@@ -172,6 +190,42 @@ public class GameManagerScript : MonoBehaviour
 			}
 		}
 		
+	}
+	
+
+	public void SetUpEvents()
+	{
+		ResetEvents();
+		currentWorldEvent = Random.Range(0, worldEvents);
+
+		switch (currentWorldEvent)
+		{
+			case 1:
+				penalty = 0;
+				break;
+			case 2:
+				penalty = penalty * 2;
+				break;
+			case 3:
+				pay = 0;
+				break;
+			case 4:
+				pay = pay*2;
+				break;
+			case 5:
+				pageDuration = 999f;
+				break;
+			default:
+				break;
+				
+		}
+	}
+
+	public void ResetEvents()
+	{
+		penalty = -20f;
+		pay = 10f;
+		pageDuration = 60f;
 	}
 
 

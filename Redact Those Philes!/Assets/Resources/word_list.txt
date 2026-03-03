@@ -1,7 +1,6 @@
 Apple
 Banana
 Orange
-Strawberry
 Blueberry
 Mango
 Cat
@@ -23,3 +22,5 @@ Monga
 Island
 Perple
 Read
+Six
+Seven

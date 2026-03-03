@@ -12,7 +12,7 @@ public class BannedWordSpawnerScript : MonoBehaviour
     [SerializeField] private int columns = 1;
 
     private float widthBetween = 1f;
-    private float heightBetween = 0.3f;
+    private float heightBetween = 0.5f;
 
     private float margin = 0.2f;
     private float alternateMargin = 0.4f;
