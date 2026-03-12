@@ -495,7 +495,7 @@ At the end of the day, you get money for not making mistakes and pay bills.
 
 - These are some Look/Feel Prototypes that I drew so that I know the layout that I need to make.
 
-![RTPPrototype](/Process/rtp_prototype.png)
+![RTPPrototype](/Process/Images/rtp_prototype.png)
 
 - And this is a Implementation prototype that I quickly made to reflect the layout that I want.
 
@@ -693,3 +693,125 @@ Your shop is a mix of a bar / instrument rental shop. Eventually you will unlock
 ## Conclusion
 
 This idea is lowkey very good but I don't think it will be executed anytime soon. I might one day come back to this idea.
+
+------------------------------
+# Iterative Prototype 2 | 26-02-2026 - 12-03-2026
+
+So for this week, I decided that I wanted to continue working on my idea from 2 weeks ago (Redact Those Philes).
+
+## What I did a while ago
+
+Right after I wrote out the journal for that week, I worked on 
+- Displaying the Banned Words
+- Difficulty scaling off of Levels
+- Pages / Rounds
+- Days (Levels)
+- Summary Screen (No Data connected)
+
+![endScreen1](/Process/Images/end_screen_v1.png)
+
+## Day 1
+
+### End / Summary Screen
+
+Now, I need to link the actual values to the screen and I should also display the Total at the end.
+All I need to do is to put all the text boxes as Attributes of a script and get the values from the Singleton GameManager Object.
+The total is slightly different as I needed to create a new function to calculate the amount to add, 
+as I don't want to directly add it to the balance right away or else it will override the "Balance" field.
+
+![endScreen2](/Process/Images/end_screen_v2.png)
+*the data is still not connected in this picture, but imagine it*
+
+After this, I needed to be able to open this screen at the end of a Day, but then that means that I need to connect the next Day button to call the `NewDay()` function
+
+
+### ReFormatting
+The words felt wayy to small to see, which makes it a bit uncomfortable to play the game. I originally kept it that way because it felt like a word document. 
+But as I kept play testing, it was annoying to put my face up to the screen, so I decided I should make it bigger as a quality of life change.
+
+![oldVersion](/Process/Images/redacted_file.png)
+
+The issues with making the font bigger is that the longer words would overlap or be split on 2 lines. My solution to this is to get rid of the bigger words, which was only "Strawberry".
+With the words bigger, I needed to change the spawners to place them properly. 
+Fortunately, I set attributes for that code to have a width_between, height_between, and margins to be easily modifiable.
+I also needed to change the File size so that it can properly fit the bigger words. 
+At the same time, I decreased the amount of maximum rows so that it gets less overwhelming.
+
+![day1](/Process/Images/day1.png)
+
+### World Events
+
+Since my game is based on how the Epstein files are getting handled, I thought that it would be pretty funny to include some events that affect gameplay to be based on real life stuff.
+The events that I thought of are:
+- "The DOW is over 50000!": No Penalties for Mistakes
+- "Getting Tariff Dividends": Double Pay
+- "Government Shutdown": No Pay
+- "We are getting investigated": Double Penalties for Mistakes
+- "Deadline to release files is approaching!": Longer Time Limit per Pages
+
+Some other ones that I am thinking about rn but haven't implemented
+- "Foreign Interference": Get Donation Money
+- "Rent Freeze": No Bills 
+- "Flu Season": More Bills
+
+
+The hardest part was thinking about how to implement this system. 
+I originally set it up as a bunch of booleans so that I could have 2 effects at the same time if I wanted to.
+The issue is that I have to go through a bunch of if statements to check if an event is set up as True.
+
+I then switched over to an array of booleans so I can quickly loop through them. 
+Then I realized that I was stupid and just needed a integer variable and use a switch case to set up the events.
+Since I would still have to write unique code for new events, putting them all in a switch case means that I can just add a new Case for a new event.
+While this is similar to just writing a bunch of if statements with the boolean array, I don't need to check if a boolean is true or not, I just need to compare the integer I get from randomly generating it.
+
+Then I wrote a function to help reset all the stats changed from the events. This gets called before a world event is set up so that they don't get affected by the previous day.
+
+![doublePay](/Process/Images/doublePay.png)
+![doublePenalty](/Process/Images/doublePenalty.png)
+
+### The next step
+
+The next thing that I plan to do is to have a black screen that fades in, then displays the end of day summary, and fade back to black.
+While its black a second time, this gives me the opportunity to make a text dialogue pop up for Bribing, then after that I can pop up a newspaper with world events.
+
+## BONUS 
+During the reading week, I had to do a challenge for an interview. The challenge was to create a game / prototype about the human digestive system.
+
+I tried listening to YouTube videos about this subject, and I did not understand a single word. So instead, I decided to focus on the coding part.
+
+### Ideation
+
+Every video that I watched was about food going through the mouth, then the oesophagus, the stomach, and finally the intestines.
+The first thing that I thought about was a Tower Defense Game. Since we want to break down the food, using organs and things in our body that disolves the food as the Towers was genius.
+
+### Process
+
+I created a google docs and started listing out all the Objects, Functions, and Attributes that I might need to implement. 
+I also wanted to try to impress the people by incorporating inheritance and design patterns like the singleton instance, decorator, strategy, etc.
+For example, There is a base "Entity" script, which both the Towers and Enemies inherit from, giving them the same attributes and functions.
+
+![Doc1](/Process/Images/hdtd_doc1.png)
+![Doc2](/Process/Images/hdtd_doc2.png)
+
+I also included some moodboard images to help with the layout of the UI.
+
+![HDTD_MoodBoard](/Process/Images/hdtd_moodboard.png)
+
+Then I started implementing stuff.
+
+### Implementation
+
+The hardest things during implementation, is to create the attacking script for the towers. 
+I needed it to be Generic enough so that I can reuse existing code as well as making a variety of attacks with a singular script.
+To do so, I created a base abstract Attack script, which all attacks / action that affects enemies will inherit.
+This Attack script will hold the information of the tower that is attacking, this allows the attack to use stats of the Attacking entity, 
+making it very easy to slap it on another Tower or even Enemy. Any child can also override the functions and attributes built-in to create special effects like slowing or reducing armor.
+And these scripts are also reusable and can be added on top of an attack, giving them even more effects.
+
+An example is the speedbump which has a ReduceSpeed Module, making it deal its regular attack damage (1) and slowing enemies by a specified amount and duration.
+
+An example of the modularity of the code is that the Spit Spitter and Acid Sprayer uses the exact same code, but different settings. The acid sprayer does have an additional Defense Reduction module tho.
+
+### Conclusion
+Since this isn't really the main topic, il keep it short, and you can try out the prototype here
+https://piploop.itch.io/human-digestion-tower-defense 
