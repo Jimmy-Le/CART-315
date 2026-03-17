@@ -30,6 +30,13 @@ public class GameManagerScript : MonoBehaviour
 	public float pay = 10f;
 	public float donations = 0f;
 	public float bills = -100f;
+	
+	// Base Stats
+	public float basePenalty = -20f;
+	public float basePay = 10f;
+	public float baseDonations = 0f;
+	public float baseBills = -100f;
+	public float basePageDuration = 60f;
 
 	// Game Stats
 	public int level = 0;
@@ -50,8 +57,8 @@ public class GameManagerScript : MonoBehaviour
 	public bool corruptionMistakes = false;
 	
 	// World Events
-	private int worldEvents = 6;
-	public int currentWorldEvent = 0;
+	[SerializeField] private WorldEventScript[] worldEvents;
+	public WorldEventScript currentWorldEvent;
 	
 	// 0: No Event
 	// 1: Dow is over 50000, no penalty is applied
@@ -64,6 +71,12 @@ public class GameManagerScript : MonoBehaviour
 
     void Awake()
     {
+	    if (instance != null && instance != this)
+	    {
+		    Destroy(gameObject);  // Destroys the duplicate GameObject
+		    return;
+	    }
+	    
         instance = this;
         DontDestroyOnLoad(gameObject);
         ScrapeWords();
@@ -145,6 +158,7 @@ public class GameManagerScript : MonoBehaviour
 		if (level >= 3)
 		{
 			SetUpEvents();
+			UIScript.instance.UpdateEventPanel();
 		}
 
 		for(int i = 0; i < maxBannedWords; i++)
@@ -196,36 +210,18 @@ public class GameManagerScript : MonoBehaviour
 	public void SetUpEvents()
 	{
 		ResetEvents();
-		currentWorldEvent = Random.Range(0, worldEvents);
+		currentWorldEvent = worldEvents[Random.Range(0, worldEvents.Length)];
 
-		switch (currentWorldEvent)
-		{
-			case 1:
-				penalty = 0;
-				break;
-			case 2:
-				penalty = penalty * 2;
-				break;
-			case 3:
-				pay = 0;
-				break;
-			case 4:
-				pay = pay*2;
-				break;
-			case 5:
-				pageDuration = 999f;
-				break;
-			default:
-				break;
-				
-		}
+		currentWorldEvent.ActivateEvent();
 	}
 
 	public void ResetEvents()
 	{
-		penalty = -20f;
-		pay = 10f;
-		pageDuration = 60f;
+		penalty = basePenalty;
+		pay = basePay;
+		pageDuration = basePageDuration;
+		bills = baseBills;
+		donations = baseDonations;
 	}
 
 
@@ -275,7 +271,34 @@ public class GameManagerScript : MonoBehaviour
 			Destroy(word);
 		}
 	}
-    
+	
+	
+	// Setters 
+
+	public void ModifyPenalty(float newPenalty)
+	{
+		penalty += newPenalty;
+	}
+
+	public void ModifyPay(float newPay)
+	{
+		pay += newPay;
+	}
+
+	public void ModifyDonations(float newDonations)
+	{
+		donations += newDonations;
+	}
+
+	public void ModifyBills(float newBills)
+	{
+		bills += newBills;
+	}
+
+	public void ModifyPageDuration(float newPageDuration)
+	{
+		pageDuration += newPageDuration;
+	}
    
     
 
