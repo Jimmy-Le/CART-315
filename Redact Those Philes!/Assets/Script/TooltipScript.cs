@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [ExecuteInEditMode()]
 public class TooltipScript : MonoBehaviour
@@ -11,6 +12,15 @@ public class TooltipScript : MonoBehaviour
     [SerializeField] public LayoutElement layoutElement;
 
     [SerializeField] public int characterWrapLimit;
+    
+    public RectTransform rectTransform;
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
+    
+    
 
     public void SetText(string content, string header = "")
     {
@@ -45,7 +55,17 @@ public class TooltipScript : MonoBehaviour
             layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true: false;
             
         }
-       
+
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        
+
+        float pivotX = mousePosition.x / Screen.width;
+        float pivotY = mousePosition.y / Screen.height;
+        
+        rectTransform.pivot = new Vector2(pivotX, pivotY);
+        
+        transform.position = mousePosition;
+
 
     }
 }

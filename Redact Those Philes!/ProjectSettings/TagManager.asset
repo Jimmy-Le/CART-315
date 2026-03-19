@@ -7,6 +7,9 @@ TagManager:
   - Word
   - UI
   - Banned Words
+  - Sticker UI
+  - Stickers
+  - File
   layers:
   - Default
   - TransparentFX
@@ -53,8 +56,11 @@ TagManager:
   - name: Words
     uniqueID: 2964785539
     locked: 0
-  - name: Sticker
+  - name: StickerSheet
     uniqueID: 1506145175
+    locked: 0
+  - name: Sticker
+    uniqueID: 2269697189
     locked: 0
   - name: Buttons and UI
     uniqueID: 1858722845

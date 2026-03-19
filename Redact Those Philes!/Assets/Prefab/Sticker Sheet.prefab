@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6605993892727361163}
   m_Layer: 9
   m_Name: Sticker Sheet
-  m_TagString: Untagged
+  m_TagString: Sticker UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

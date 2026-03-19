@@ -9,6 +9,7 @@ public class GameManagerScript : MonoBehaviour
 	//Prefabs
 	[SerializeField] public GameObject filePrefab;
 	[SerializeField] public Transform fileSpawnPoint;
+	[SerializeField] public GameObject stickerFolder;
 	public GameObject activeFile;
 
 	[SerializeField] public BannedWordSpawnerScript bannedWordSpawner;
@@ -299,7 +300,14 @@ public class GameManagerScript : MonoBehaviour
 	{
 		pageDuration += newPageDuration;
 	}
-   
+
+	public void ClearStickers()
+	{
+		while (stickerFolder.transform.childCount > 0)
+		{
+			DestroyImmediate(transform.GetChild(0).gameObject);
+		}
+	}
     
 
 }
