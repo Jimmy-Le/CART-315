@@ -815,3 +815,127 @@ An example of the modularity of the code is that the Spit Spitter and Acid Spray
 ### Conclusion
 Since this isn't really the main topic, il keep it short, and you can try out the prototype here
 https://piploop.itch.io/human-digestion-tower-defense 
+
+---------------------------
+
+# Iterative Prototype 3 | 12-03-2026 - 18-03-2026
+
+## Design Values
+
+I briefly read through the chapters on Design Values and I'll try to answer the question in the same form as the book.
+The main Design Value is probably showing the absurdity of how the Epstein Files are being handled.
+
+### Experience
+This prototype is a single-player game inspired by the recent events of the handling of the Epstein Files.
+It simulates a job where the player must redact certain words in a given file to earn money and pay off your bills. 
+As the days pass by, certain world events will affect gameplay with the potential for malicious groups that want you to redact their list of words.
+It uses a simple point and click control scheme, with the occasional dragging to put stickers on files.
+There is also (supposed to be) a calming, "girly pop" aesthetics, where you are working on something horrible, but is presented in an innocent and whimsical way.
+
+### Theme
+The handling of the Epstein Files and corruption. You pretend to be an employee redacting a list of words given to you by your boss.
+
+### Point of View
+The game is presented in a Top-DOwn point of view, where it simulates a person looking down at their desk to work.
+The graphics should be very whimsical, with a lot of sparkly effects to contrast the dark nature of the work.
+I did also think about being able to walk around your room before and after starting work, but I looked at my code and I don't think that is possible anymore :(
+I will elaborate on this in the usual section.
+
+### Challenge
+The game is meant to be a simulation of (what i think) a job for redacting files, it is supposed to be repetitive and mundane, 
+but there will be events where you must choose to either follow the law, or break some rules to make extra money and not get assassinated.
+
+
+
+### Decision-Making
+The decisions are made in real-time, as there is a timer ticking down, so you must decide to either focus on following the law, 
+or break the rules, to please your "benefactor" at the potential cost of your bills not getting paid.
+
+### Skill, Strategy, Chance, and Uncertainty
+For skill, you have to be somewhat quick to identity what words are needed to be redacted as you have limited time to identify all the words.
+For Strategy, you might develop your own "algorithm" to quickly look through the list of words.
+For Chance and Uncertainty, there are world events that can help or harm you, the words are also procedurally generated so you can never know in advance what you get.
+
+### Context
+The game is played on a computer, will probably be hosted on my Itch page.
+
+### Emotions
+I plan to have some fun moments where players make the connection with real world events, but I do intend my game to be mundane or chill.
+I think something like Supermarket Together which is a game about you and your friends running a super market, and you work as a cashier, janitor or restocker and do mundane tasks. 
+This game is "hypnotising" where its fun to just do mundane things and get praised for it?
+I think the main emotion would be Focus, and Chill?
+
+
+## Prototype Update
+
+During the reading week, I did a little side project (the bonus) and I really focused on having clean, modular, and scalable code. 
+Then I went back to this game and now im depressed at how bad it is.
+I kinda don't like working on old projects because I am constantly improving and I look back at my stuff with disgust.
+But I will try to keep working on this.
+
+### What I have Done
+
+I wanted to display a description of the current world event, but I didn't want it to take up the entire screen, so the solution is to create a hover tooltip.
+I didn't really know how to do this so I followed a tutorial for this:
+https://www.youtube.com/watch?v=HXFoUGw7eKk
+I think its very nice, and the way this person explains it, makes it usable for any other systems that need tooltips.
+
+My version kinda looks like shit, but it works!
+![Tooltip](/Process/Images/RTP_Tooltip.gif)
+
+What I also did was the Drag and Drop mechanic for my stickers.
+This took me the longest to do because I decided that I wanted stickers to be phyiscal objects instead of UI elements.
+I originally thought that it would make sense to have it attach to the file and disapear, but objects are harder to manipulate with the mouse.
+I tried messing around, but there were always some bugs, so i decided to try a Tutorial as well.
+https://www.youtube.com/watch?v=wlBJ0yZOYfM
+
+In this tutorial, they use UI elements for their inventory, but I still took the idea of having the transform follow the mouse during the dragging phase.
+I then spent a lot of time trying to have different mouse inputs functions, but eventually ended up just creating a "Drag" action with the new Input Action Manager thing.
+And when Drag is "WasPressedOnThisFrame()", I can set a boolean to say it is currently dragging, and when it is "WasReleased" i set it to false.
+While it is dragging, it follows the mouse.
+
+I also thought that it would be cool if I could attach stickers to a file, I believe that you can add stickers to a file, but you cant take them out hierarchially.
+SO when a file is gone, all the stickers "attached" to it is destroyed as well.
+
+I also wanted to make the stickers replenish themselves after being dragged out, but they kept infinitely multiplying, so I scrapped that Idea and just made it replenish when it gets destroyed.
+
+Here is what the stickers look like!
+![Stickers](/Process/Images/RTP_Stickers.gif)
+
+
+### Why I did this
+
+I think its important for players to know what Events are happening. 
+I want them to be able to read the description to plan their gameplay around it. 
+The issue is that it is too much information that the player doesn't immediately need, so we need to keep it hidden.
+I thought about using tooltips, because it comes and goes whenever the player wants.
+
+For stickers, I really want stickers because its fun, so this feature needs to be in the game.
+I did originally plan that in later levels you would have opportunity to redact Photos which you use the stickers to hide.
+But otherwise, they are fun decorations for players to place anywhere.
+
+Why do i care about this feature? Because these small moments of joy is what makes a game good.
+I like to think about this "study" that I heard on Youtube shorts where people were split into 2 groups to rate their enjoyment at a movie.
+1 group had popcorn and the other didn't. The group with the popcorn rated their enjoyment of the movie higher than the control group. 
+Which is why it is important to include features for users to enjoy that isn't a part of the main "movie".
+Conversely, people don't come to the movie theather just to eat Pop Corn, so that shouldn't be the main attraction of a game.
+
+As such, i try to keep reminding myself, what "Pop Corn" can I bring to help players enjoy the main game.
+Stickers are optional, but they can be fun to engage with.
+
+### What to do next
+
+I Still need to plan a consequence screen where if the player gets a negative balance, they die.
+I also want to add in Corruption where there is another list of words that evil groups want you to redact for a large donation.
+If you fail to comply you get messages, If you do it halfway, you get threaths, and If your corruption levels are too high you might die after making mistakes.
+
+However, I think I want to work on music and assets for the game as the aesthetics are very important, so that might be my goal for next week.
+
+
+--------------------------------------
+
+
+
+
+
+
