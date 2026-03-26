@@ -6,6 +6,7 @@ public class ClickFunctionalityScript : MonoBehaviour
     [SerializeField] public InputActionAsset inputActions;
     [SerializeField] private Camera cam;
     
+	private int layerMask;
     private InputAction clickAction;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,14 +26,19 @@ public class ClickFunctionalityScript : MonoBehaviour
     
     void OnClickPerformed()
     {
+        int clickableMask = LayerMask.GetMask("Words");
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector3 worldPos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
-        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, clickableMask);
 
         if (hit.collider != null)
         {
             RedactionScript word = hit.collider.GetComponent<RedactionScript>();
             word?.OnClicked();
         }
-    }
+
+	}
+
+
+
 }

@@ -107,8 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4500f817669cd81d18ff30b903e8bd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggingHandlerScript
-  isSelfDraggable: 0
+  isChild: 0
   inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  objectToDrag: Stickers
 --- !u!61 &7526317504050250297
 BoxCollider2D:
   m_ObjectHideFlags: 0

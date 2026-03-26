@@ -10,6 +10,7 @@ TagManager:
   - Sticker UI
   - Stickers
   - File
+  - Sticker Folder
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Files
   - Stickers
   - Sticker Sheet
-  - 
-  - 
+  - Words
+  - StickerFolder
   - 
   - 
   - 

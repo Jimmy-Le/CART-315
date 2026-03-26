@@ -10,11 +10,5 @@ public class SwitchParentScript : MonoBehaviour
         transform.SetParent(other.transform);
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("File"))
-        {
-            transform.SetParent(GameManagerScript.instance.stickerFolder.transform);
-        }
-    }
+
 }

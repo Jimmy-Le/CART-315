@@ -233,6 +233,7 @@ public class GameManagerScript : MonoBehaviour
         {
         	CalculatePoints(); 
         	Destroy(activeFile);
+			ClearStickers();
         }
 
 		if (pageCounter < pageMax)

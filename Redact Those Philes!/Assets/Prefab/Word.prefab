@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2749425732708776410}
   - component: {fileID: 3194884439560409095}
   - component: {fileID: 8728677227503756965}
-  m_Layer: 7
+  - component: {fileID: 5403491505446656072}
+  m_Layer: 10
   m_Name: Word
   m_TagString: Word
   m_Icon: {fileID: 0}
@@ -259,6 +260,29 @@ MonoBehaviour:
   wordText: {fileID: 9058590787416441390}
   wordUsed: 
   wordID: 0
+--- !u!223 &5403491505446656072
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078633531864885406}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &7813859063820756101
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4606423262502721218}
   - component: {fileID: 5275516458109491051}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Redaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
