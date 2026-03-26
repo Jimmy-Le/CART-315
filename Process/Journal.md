@@ -934,8 +934,90 @@ However, I think I want to work on music and assets for the game as the aestheti
 
 --------------------------------------
 
+# Iterative Prototype 4 | 18-03-2026 - 26-03-2026
 
+This week I did a game jam during the weekend, so I didn't do much programming. I instead focus more on art and audio.
 
+## What I did
 
+### Art
 
+I wanted my game to be very whimsical and kind of reflect the real world, so my stickers needed to be kind of a reference to that.
 
+Since I'm not very good at being consistant with my art, I asked a friend (Arielle) for some advice on how to draw better.
+The advice that she gave me (that I could remember) were
+
+- Use Adobe Color to pick colors
+- Use a limited color palette (3-5 colors)
+- Try to reuse the same color in different assets
+- Make sure that the colors in your color palette are all different values (use grayscale to verify)
+- Draw a line with your main color at a lower oppacity across all the colors to see if they are unified (I did not do this)
+- Shift Color hues for shadows to be opposite of your light (if your light is yellow, then move your shadows towards blue)
+
+Here are the results:
+
+![Minion](/Process/Images/Sticker_Minion.png)
+![Yippie](/Process/Images/Sticker_Yippie.png)
+![GoodJob](/Process/Images/Sticker_GoodJob.png)
+![IDidThat](/Process/Images/Sticker_IDidThat.png)
+
+Now I wanted to move on to audio because that takes a lot of time to get right.
+
+### Audio
+
+I don't know how to put audio on this file, so just pretend like you are hearing things. You can check them out in the [Sound](/Process/Sounds/) folder
+
+At first I tried to make some sound effect with Bfxr.net, but it was starting to hurt my head testing out all the combinations, so I decided to switch to MuseScore Studio 4. I have created some "music" and sound effects before by putting random notes on the music sheets, so I am somewhat comfortable with it.
+
+I then created the sound effects for my game, but lowkey I don't know if they are the right vibes yet, I might switch back to BFXR if i have time.
+
+- Picking Up Stickers
+- Dropping Stickers
+- Redacting Files
+
+Then it was time for the music 💀
+
+I did not save the old versions, but they were hot ass. I have settled into this version, but a part of me feels like it isn't good enough.
+
+The things I struggled with was trying to not accidentally plagiarise music that pop up in my head (at one point it became the fnaf theme). I also don't feel like this is the vibe that I want, but I can't do better than this without taking a whole week for it.
+
+To make it better, I tried to use resources like [A Guide to Making Video Game Music](https://www.youtube.com/watch?v=dMkTdYmOgiQ), and while the ABAB format is what I mostly used, it didn't help much :/
+
+I also tried to make every chord non-dissonant (if thats a word), so for every impactful note, they are all on the line or in the empty spaces, not both. This makes them not conflict with eachother. (Upon taking this screenshot, I realize I could've fix it some more)
+
+![MuseScore](/Process/Images/MuseScore.png)
+
+I did end up with something that doesn't sound too bad? I will see if I can fix it some more later.
+
+## Why I did this
+
+I needed to do assets.
+
+## What is next
+
+I still need to do some more sound effects like 
+
+- New page
+- New Day
+- End of Day
+
+I also need to do some more art
+
+- 2 more stickers
+- Redaction Word File background (optional)
+- Corruption Word File background (this one isnt even implemented yet)
+- BoomBox (to mute or turn on music)
+- Table Background
+- Sticker Sheet
+- Files?
+- Current Event Banner
+
+For programming
+
+- Bad Ending
+- Corruption File
+- Corruption Events
+- Dialog Cutscene
+- Main Menu
+
+------------------------ 
