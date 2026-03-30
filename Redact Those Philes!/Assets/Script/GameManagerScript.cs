@@ -10,9 +10,21 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField] public GameObject filePrefab;
 	[SerializeField] public Transform fileSpawnPoint;
 	[SerializeField] public GameObject stickerFolder;
+
+	[SerializeField] public GameObject IllegalNote;
+	[SerializeField] public Transform IllegalNoteSpawnPoint;
+	private GameObject existingIllegalNote;
 	public GameObject activeFile;
 
 	[SerializeField] public BannedWordSpawnerScript bannedWordSpawner;
+
+	// 0: Normal Dialog
+	// 1: Bribery Dialog
+	// 2: Death Dialog
+	// 3: Bills Dialog
+	// 4: Fired Dialog
+	[SerializeField] public List<DialogSceneScript> allDialogs = new List<DialogSceneScript>();
+	[SerializeField] public DialogSceneScript currentDialogScene;
     
 
 	// Words 
@@ -22,7 +34,7 @@ public class GameManagerScript : MonoBehaviour
 
     private string filename = "word_list";
 	private int baseWords = 2;
-	private int maxWords = 6;
+	private int maxWords = 5;
 
 	// Money Stats
 	public float balance = 200f;
@@ -47,7 +59,7 @@ public class GameManagerScript : MonoBehaviour
 	
 	public int pageCounter = 0;
 	public int pageMax = 5;
-	public int pageLimit = 10;
+	public int pageLimit = 7;
 	public int pageBase = 5;
 	
 	// Player Stats
@@ -60,6 +72,8 @@ public class GameManagerScript : MonoBehaviour
 	// World Events
 	[SerializeField] private WorldEventScript[] worldEvents;
 	public WorldEventScript currentWorldEvent;
+
+	public bool switchRedactionList = false;
 	
 	// 0: No Event
 	// 1: Dow is over 50000, no penalty is applied
@@ -67,6 +81,7 @@ public class GameManagerScript : MonoBehaviour
 	// 3: Government Shutdown, No Pay
 	// 4: Tariff Money, Double Pay
 	// 5: Deadline is approaching, Take as much time as you need, page Timer set to 999f
+	// 6: Move the Goalpost, the list to redact changes every new page
 	
 	
 
@@ -79,9 +94,14 @@ public class GameManagerScript : MonoBehaviour
 	    }
 	    
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         ScrapeWords();
-		NewDay();
+		// NewDay();
+    }
+
+    void Start()
+    {
+	    OpenIntro();
     }
 
     public void ScrapeWords()
@@ -133,20 +153,34 @@ public class GameManagerScript : MonoBehaviour
 		
 		do {
 			redactionWordID = GenerateWordIndex();
-		} while (wordsToRedactID.Contains(redactionWordID));
+		} while (wordsToRedactID.Contains(redactionWordID) || wordsToRedactIllegallyID.Contains(redactionWordID));
 
 		wordsToRedactID.Add(redactionWordID);
 	}
+	
+	public void GenerateIllegalRedactionWord()
+	{
+		int redactionWordID;
+		
+		do {
+			redactionWordID = GenerateWordIndex();
+		} while (wordsToRedactID.Contains(redactionWordID) || wordsToRedactIllegallyID.Contains(redactionWordID));
+
+		wordsToRedactIllegallyID.Add(redactionWordID);
+	}
+	
 
 	public void NewDay()
 	{
 		ClearBannedWords();
+		ClearIllegalWords();
 		balance += addToBalance;
 		pageCounter = 0;
 		addToBalance = 0;
 		mistakes = 0;
 		correctWords = 0;
 		donations = 0;
+		ResetEvents();
 		
 		
 		timer = pageDuration;
@@ -156,7 +190,7 @@ public class GameManagerScript : MonoBehaviour
 		
 		int maxBannedWords = System.Math.Min(maxWords, baseWords + (int) System.Math.Ceiling((double) (level / 2)));
 		pageMax = System.Math.Min(pageLimit, pageBase + (int)System.Math.Ceiling((double)(level / 3)));
-		if (level >= 3)
+		if (level >= 2)
 		{
 			SetUpEvents();
 			UIScript.instance.UpdateEventPanel();
@@ -170,6 +204,17 @@ public class GameManagerScript : MonoBehaviour
 
 		NewFile();
 		timeStarted = true;
+	}
+
+	public void RegenerateRedactionWords()
+	{
+		ClearBannedWords();
+		int maxBannedWords = System.Math.Min(maxWords, baseWords + (int) System.Math.Ceiling((double) (level / 2)));
+		for(int i = 0; i < maxBannedWords; i++)
+		{
+			GenerateRedactionWord();
+		}
+		bannedWordSpawner.SpawnWords();
 	}
     
 	public void CalculatePoints()
@@ -197,7 +242,7 @@ public class GameManagerScript : MonoBehaviour
 				corruptionLevel++;
 
 			} 
-			else if (isIllegal && !isRedacted)									// If a player refuses to cooperate with the bribery or makes a mistake, consequences will happen
+			else if (isIllegal && !isRedacted && isCorrupted)					// If a player refuses to cooperate with the bribery or makes a mistake, consequences will happen
 			{
 				corruptionMistakes = true;
 				corruptionLevel--;
@@ -223,9 +268,14 @@ public class GameManagerScript : MonoBehaviour
 		pageDuration = basePageDuration;
 		bills = baseBills;
 		donations = baseDonations;
+		switchRedactionList = false;
 	}
 
 
+	public void SpawnIllegalNote()
+	{
+		existingIllegalNote = Instantiate(IllegalNote, IllegalNoteSpawnPoint);
+	}
 
 	public void NewFile()
 	{
@@ -245,6 +295,14 @@ public class GameManagerScript : MonoBehaviour
 			activeFile.transform.SetParent(null);
 			pageCounter++;
 			UIScript.instance.UpdatePages();
+
+			if (switchRedactionList)
+			{
+				RegenerateRedactionWords();
+			}
+			
+			
+			
 		}
 		// 10 rounds have passed
 		else
@@ -271,6 +329,21 @@ public class GameManagerScript : MonoBehaviour
 		foreach (GameObject word in bannedWords)
 		{
 			Destroy(word);
+		}
+	}
+	public void ClearIllegalWords()
+	{
+		wordsToRedactIllegallyID.Clear();
+		GameObject[] illegalWords = GameObject.FindGameObjectsWithTag("Illegal Words");
+		foreach (GameObject word in illegalWords)
+		{
+			Destroy(word);
+		}
+
+		if (existingIllegalNote != null)
+		{
+			Destroy(existingIllegalNote);
+			existingIllegalNote = null;
 		}
 	}
 	
@@ -304,11 +377,78 @@ public class GameManagerScript : MonoBehaviour
 
 	public void ClearStickers()
 	{
-		while (stickerFolder.transform.childCount > 0)
+		// Copy children first so the loop isn’t affected by Destroy
+    	var toDestroy = new System.Collections.Generic.List<GameObject>();
+    	foreach (Transform child in stickerFolder.transform)
 		{
-			DestroyImmediate(transform.GetChild(0).gameObject);
+        	toDestroy.Add(child.gameObject);
+		}
+
+    	foreach (var go in toDestroy)
+		{
+        	Destroy(go); // destroys child and its own children
 		}
 	}
-    
+
+	// 0: Normal Dialog (Default)
+	// 1: Bribery Dialog (Dividable by 4)
+	// 2: Death Dialog (Dividable by 3)
+	// 3: Bills Dialog (Guaranteed)
+	// 4: Fired Dialog (Dividable by 5)
+	public void SetupDialogScene()
+	{
+		int randomChance = Random.Range(0, 100);
+		int dialogChoice = 0;
+		if (balance + addToBalance < bills)
+		{
+			currentDialogScene = allDialogs[3];	// Death by Bills
+			return;
+		}
+
+		if (corruptionLevel > 10 && randomChance % 5 == 0)	
+		{
+			dialogChoice = 4;	// Fired
+		}
+		else if (isCorrupted && corruptionMistakes && corruptionLevel < -5 && randomChance % 3 == 0)
+		{
+			dialogChoice = 2;	// Death by Mafia
+		}
+		else if (randomChance % 4 == 0)
+		{
+			dialogChoice = 1;		// Bribery
+		}
+
+		currentDialogScene = allDialogs[dialogChoice];
+	}
+
+
+	public void OpenDialog()
+	{
+		SetupDialogScene();
+		currentDialogScene.SetDialogIndex(0);
+		currentDialogScene.ShowDialog();
+		SummaryScript.instance.ShowDialogUI();
+	}
+
+	
+	public void OpenIntro()
+	{
+		currentDialogScene = allDialogs[5];
+		currentDialogScene.SetDialogIndex(0);
+		currentDialogScene.ShowDialog();
+		SummaryScript.instance.OpenSummaryUI();
+		SummaryScript.instance.CloseJustSummaryUI();
+		SummaryScript.instance.ShowDialogUI();
+	}
+
+	public void ContinueButtonClicked()
+	{
+		currentDialogScene.ContinueButtonAction();
+	}
+
+	public void EndGame()
+	{
+		
+	}
 
 }

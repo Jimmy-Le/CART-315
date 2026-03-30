@@ -16,6 +16,9 @@ public class StickerSlotScript : MonoBehaviour
         if (stickerPrefab != null)
         {
             GameObject sticker = Instantiate(stickerPrefab, this.transform);
+            sticker.transform.SetParent(null);
+            sticker.transform.localScale = Vector3.one;
+            sticker.transform.SetParent(this.transform);
             activeSticker = sticker;
         }
     }

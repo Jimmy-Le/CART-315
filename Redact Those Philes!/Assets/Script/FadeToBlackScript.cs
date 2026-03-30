@@ -1,11 +1,17 @@
 using UnityEngine;
+using TMPro;
 
 public class FadeToBlackScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    [SerializeField] public GameObject dialogUI;
+
+    void Start()
     {
-        
+        dialogUI.SetActive(false);
     }
-    
+
+    public void ShowDialogUI()
+    {
+        dialogUI.SetActive(true);
+    }
 }

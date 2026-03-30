@@ -5,6 +5,7 @@ public class SummaryScript : MonoBehaviour
 {
 	public static SummaryScript instance;
     [SerializeField] public GameObject summaryUI;
+    [SerializeField] public GameObject summaryUIBlock;
     [SerializeField] public TextMeshProUGUI balanceText;
     [SerializeField] public TextMeshProUGUI totalText;
     [SerializeField] public TextMeshProUGUI correctText;
@@ -12,11 +13,18 @@ public class SummaryScript : MonoBehaviour
     
     [SerializeField] public TextMeshProUGUI donationText;
     [SerializeField] public TextMeshProUGUI billsText;
+    
+    // Dialog Stuff
+    [SerializeField] public GameObject dialogUI;
+    [SerializeField] public TextMeshProUGUI dialogTextBox;
+    
 
 
     void Start()
     {
         summaryUI.SetActive(false);
+        summaryUIBlock.SetActive(false);
+        dialogUI.SetActive(false);
     }
 	
 	void Awake()
@@ -46,10 +54,32 @@ public class SummaryScript : MonoBehaviour
     {
 		UpdateAllText();
         summaryUI.SetActive(true);
+        summaryUIBlock.SetActive(true);
+        dialogUI.SetActive(false);
     }
     public void CloseSummaryUI()
     {
-        summaryUI.SetActive(false);
-		GameManagerScript.instance.NewDay();
+	    summaryUIBlock.SetActive(false);
+		GameManagerScript.instance.OpenDialog();
+    }
+    public void CloseJustSummaryUI()
+    {
+	    summaryUIBlock.SetActive(false);
+    }
+    
+    
+
+    public void CloseWholeUI()
+    {
+	    summaryUI.SetActive(false);
+    }
+    
+    public void ShowDialogUI()
+    {
+	    dialogUI.SetActive(true);
+    }
+    public void CloseDialogUI()
+    {
+	    dialogUI.SetActive(true);
     }
 }

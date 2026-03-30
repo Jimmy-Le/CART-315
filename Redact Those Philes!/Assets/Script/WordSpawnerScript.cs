@@ -10,19 +10,19 @@ public class WordSpawnerScript : MonoBehaviour
 
     [SerializeField] private int rows;
     private int baseRows = 4;
-    private int maxRows = 10;
+    private int maxRows = 7;
     
     [SerializeField] private int columns = 4;
 
     private float widthBetween = 1.3f;
-    private float heightBetween = 0.5f;
+    private float heightBetween = 0.6f;
 
     private float margin = 0.1f;
     private float alternateMargin = 0.2f;
     
     void Start()
     {
-        rows = Math.Min(baseRows * GameManagerScript.instance.level, maxRows);
+        rows = Math.Min(baseRows + (GameManagerScript.instance.level - 1), maxRows);
         SpawnWords();
     }
 

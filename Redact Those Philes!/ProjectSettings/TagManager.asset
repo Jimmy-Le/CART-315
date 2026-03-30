@@ -11,6 +11,7 @@ TagManager:
   - Stickers
   - File
   - Sticker Folder
+  - Illegal Words
   layers:
   - Default
   - TransparentFX
