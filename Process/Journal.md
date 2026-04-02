@@ -1021,3 +1021,77 @@ For programming
 - Main Menu
 
 ------------------------ 
+
+# Iterative Prototype 5 | 26-03-2026 - 02-04-2026
+
+## What I did
+
+Since most of my game is more interesting with the corruption mechanics and bad endings, I decided to work on a dialog system and a bribery event.
+I thought it would be really difficult, but turns out it was super easy because of the me from the past!
+
+### Dialog System
+After working on my Tower Defense game, a concept that I used was inheritance / abstraction to mass produce towers. 
+Since all the dialog would use the same code, but display different words, I thought: "what if I just let the Game Manager call a Dialog's "PlayDialog()" function, and switch that object based on the event?".
+So instead of manually coding 50 different UI elements with different words and visibility, I have an object that inherits a "Dialog" abstract class that I make with a string value to display.
+
+I then pushed this idea further by considering using arrays of strings that I can set up with the editor to create multi-page dialog.
+The continue button would check and increment an Index and when it goes out of bounds, it would continue the game.
+
+One issue that makes 0 sense is that the index somehow starts at 1 sometimes?? My solution is to manually set the index to 0 before calling the function that starts the dialog.
+This ensures that it is displaying the first page every "new day".
+
+### Corruption
+
+A core game mechanic is that you can occasionally get bribed to redact words that you shouldn't redact.
+The mobster will give you money upfront to do so to offset the penalty for mistakes, most of the time it won't be enough and you might go into debt which will make you lose.
+If you choose to redact a single "Illegal" word, you get marked as corrupted and any mistakes (not redacting an illegal word) you make will give you a higher chance of getting killed by the "mafia"
+If you continue with the Corruption path, you will increase your chance of getting fired by your boss for corruption.
+
+Since I codded in the corruption levels increase and decrease before the game existed, I just had to call the function to do that and copy paste the regular redaction files code, but label it as Illegal
+
+
+I think currently if you go for the "good" path, you don't encounter the bad paths? I might have to change that.
+
+As I am writting this, maybe I can multiply the donation money with your corruption level, so you make more money the more corrupted you are?
+
+### Assets 
+
+After showing my game to some classmates, they suggested that I should take a picture of Paper to use as a texture for my files. 
+They also suggested photobashing (using real pictures as assets), so I went around and took pictures of note books and different paper textures.
+
+![Table](/Process/Images/tableTexture.jpg)
+![StickerTexture](/Process/Images/stickerTexture.jpg)
+![StickyTexture](/Process/Images/StickyTexture.jpg)
+![PaperTexter](/Process/Images/PaperTexture.jpg)
+![FileTexture](/Process/Images/FileTexture.jpg)
+Oh also this one was from an Agenda that my friend designed and I have her consent to use it!
+
+The only slight issue with the realistic look is that it makes it less "Doki Doki" and more creepy, which I like. 
+I think the music and maybe more lighthearted stickers will elevate the vibe.
+
+### Other
+
+I have considered your idea of the redaction words changing after every file and made it a World event called "Moving the Goal Post".
+Every new page will generate new words. Lowkey it might clash with illegal words, but that might make it more interesting.
+
+I also added a "tutorial" dialog when you start the game, making it more player friendly.
+
+## Why I do things
+
+- The Dialog system is very important for the pacing, which gives the players a moment to breath and understand what is going on.
+- The Corruption system lets players make a choice, either take the money to pay their bills or go into debt and die. 
+There is a world event (Government Shutdown) that prevents the players from making money normally.
+- For assets, I think drawing in paper and table texture is really hard without it looking like shit so taking pictures makes it more interesting
+- World Events are super easy to add in, I just need to sometimes make a custom function inside the GameManager to modify certain variables, but otherwise you create a new object and slap the World Event script on it.
+
+
+## What is next
+
+- I still need to create a Main Menu which the death sequences will lead back to
+- More stickers (maybe a heart one)
+- Make doing the "Good" route punishing especially if you make money upfront with donations
+- Implement more sound effects
+- And new day/ end day sound effects
+
+----------------
+
