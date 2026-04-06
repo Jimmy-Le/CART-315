@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicWorldEventScript
   eventName: World War X!
   eventId: 6
-  description: A New War Started! Your bills are going up!
+  description: A New War Started! Your gas bills are going up today!
   payModifier: 0
   penaltyModifier: 0
   pageDurationModifier: 0

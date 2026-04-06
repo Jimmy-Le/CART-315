@@ -12,7 +12,7 @@ public abstract class WorldEventScript : MonoBehaviour
     [SerializeField] public float pageDurationModifier = 0;
     [SerializeField] public float donationsModifier = 0;
     [SerializeField] public float billModifier = 0;
-    
+
 
     // A function that every world event will have, it can be overriden if needed
     public virtual void ActivateEvent()
@@ -23,6 +23,9 @@ public abstract class WorldEventScript : MonoBehaviour
         gm.ModifyPageDuration(pageDurationModifier);
         gm.ModifyDonations(donationsModifier);
         gm.ModifyBills(billModifier);
+        
+
+        
         
         Debug.Log(eventName);
 

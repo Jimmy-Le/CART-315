@@ -6,25 +6,35 @@ public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript instance;
 
-	//Prefabs
+	// Prefabs
 	[SerializeField] public GameObject filePrefab;
 	[SerializeField] public Transform fileSpawnPoint;
 	[SerializeField] public GameObject stickerFolder;
+	[SerializeField] public SwitchScenes switchSceneScript;
+	
+	// Audio
+	[SerializeField] public AudioSource backgroundMusic;
+	[SerializeField] public AudioSource newFileSound;
+	[SerializeField] public AudioSource knockingSound;
+	[SerializeField] public AudioSource endDaySound;
+	
 
+	// Illegal Stuff
 	[SerializeField] public GameObject IllegalNote;
 	[SerializeField] public Transform IllegalNoteSpawnPoint;
+	[SerializeField] public BannedWordSpawnerScript bannedWordSpawner;
 	private GameObject existingIllegalNote;
 	public GameObject activeFile;
-
-	[SerializeField] public BannedWordSpawnerScript bannedWordSpawner;
-
+	
+	// Dialog
 	// 0: Normal Dialog
 	// 1: Bribery Dialog
 	// 2: Death Dialog
 	// 3: Bills Dialog
 	// 4: Fired Dialog
-	[SerializeField] public List<DialogSceneScript> allDialogs = new List<DialogSceneScript>();
-	[SerializeField] public DialogSceneScript currentDialogScene;
+	[SerializeField] public List<GameObject> dialogPrefabs =  new List<GameObject>();
+	[SerializeField] public GameObject currentDialogScene;
+	[SerializeField] public GameObject initializedDialog;
     
 
 	// Words 
@@ -68,7 +78,8 @@ public class GameManagerScript : MonoBehaviour
 	public int corruptionLevel = 0;
 	public bool isCorrupted = false;
 	public bool corruptionMistakes = false;
-	
+	public bool encounteredMafia = false;	
+
 	// World Events
 	[SerializeField] private WorldEventScript[] worldEvents;
 	public WorldEventScript currentWorldEvent;
@@ -94,9 +105,8 @@ public class GameManagerScript : MonoBehaviour
 	    }
 	    
         instance = this;
-        // DontDestroyOnLoad(gameObject);
         ScrapeWords();
-		// NewDay();
+
     }
 
     void Start()
@@ -181,6 +191,7 @@ public class GameManagerScript : MonoBehaviour
 		correctWords = 0;
 		donations = 0;
 		ResetEvents();
+		Destroy(initializedDialog);
 		
 		
 		timer = pageDuration;
@@ -203,6 +214,7 @@ public class GameManagerScript : MonoBehaviour
 		bannedWordSpawner.SpawnWords();
 
 		NewFile();
+		PlayMusic();
 		timeStarted = true;
 	}
 
@@ -293,6 +305,12 @@ public class GameManagerScript : MonoBehaviour
 			
 			activeFile = Instantiate(filePrefab, fileSpawnPoint.position, transform.rotation);
 			activeFile.transform.SetParent(null);
+
+			if (pageCounter != 0)
+			{
+				newFileSound.Play();
+			}
+
 			pageCounter++;
 			UIScript.instance.UpdatePages();
 
@@ -300,8 +318,6 @@ public class GameManagerScript : MonoBehaviour
 			{
 				RegenerateRedactionWords();
 			}
-			
-			
 			
 		}
 		// 10 rounds have passed
@@ -312,6 +328,8 @@ public class GameManagerScript : MonoBehaviour
 			Debug.Log("The Day Has Ended!");
 			CalculateProfit();
 			SummaryScript.instance.OpenSummaryUI();
+			backgroundMusic.Stop();
+			endDaySound.Play();
 			// NewDay();
 		}
 
@@ -395,13 +413,14 @@ public class GameManagerScript : MonoBehaviour
 	// 2: Death Dialog (Dividable by 3)
 	// 3: Bills Dialog (Guaranteed)
 	// 4: Fired Dialog (Dividable by 5)
+	// 5: Intro
 	public void SetupDialogScene()
 	{
 		int randomChance = Random.Range(0, 100);
 		int dialogChoice = 0;
 		if (balance + addToBalance < bills)
 		{
-			currentDialogScene = allDialogs[3];	// Death by Bills
+			currentDialogScene = dialogPrefabs[3];	// Death by Bills
 			return;
 		}
 
@@ -417,38 +436,63 @@ public class GameManagerScript : MonoBehaviour
 		{
 			dialogChoice = 1;		// Bribery
 		}
+		else if (randomChance % 5 == 0 && !isCorrupted && encounteredMafia)	// Death by mafia if you are non corrupt
+		{
+			dialogChoice = 2;
+		}
 
-		currentDialogScene = allDialogs[dialogChoice];
+		currentDialogScene = dialogPrefabs[dialogChoice];
 	}
 
 
 	public void OpenDialog()
 	{
 		SetupDialogScene();
-		currentDialogScene.SetDialogIndex(0);
-		currentDialogScene.ShowDialog();
+		initializedDialog = Instantiate(currentDialogScene);
+
+		DialogSceneScript dialogScript = initializedDialog.GetComponent<DialogSceneScript>();
+
+		dialogScript.SetDialogIndex(0);
+		dialogScript.ShowDialog();
 		SummaryScript.instance.ShowDialogUI();
+		knockingSound.Play();
+
 	}
 
 	
 	public void OpenIntro()
 	{
-		currentDialogScene = allDialogs[5];
-		currentDialogScene.SetDialogIndex(0);
-		currentDialogScene.ShowDialog();
+		currentDialogScene = dialogPrefabs[5];
+		initializedDialog = Instantiate(currentDialogScene);
+		DialogSceneScript dialogScript = initializedDialog.GetComponent<DialogSceneScript>();
+
+		dialogScript.SetDialogIndex(0);
+		dialogScript.ShowDialog();
 		SummaryScript.instance.OpenSummaryUI();
 		SummaryScript.instance.CloseJustSummaryUI();
 		SummaryScript.instance.ShowDialogUI();
+		
 	}
 
 	public void ContinueButtonClicked()
 	{
-		currentDialogScene.ContinueButtonAction();
+		
+		DialogSceneScript dialogScript = initializedDialog.GetComponent<DialogSceneScript>();
+		dialogScript.ContinueButtonAction();
+	}
+
+	public void PlayMusic()
+	{
+		if (!backgroundMusic.isPlaying)
+		{
+			backgroundMusic.Play();
+		}
+		
 	}
 
 	public void EndGame()
 	{
-		
+		switchSceneScript.ChangeScene();
 	}
 
 }

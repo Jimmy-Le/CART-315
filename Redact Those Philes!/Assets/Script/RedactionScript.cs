@@ -4,8 +4,10 @@ public class RedactionScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private SpriteRenderer blackSquare;
+    [SerializeField] public AudioSource audio;
     private bool isClicked = false;
     private bool isRedactable = true;
+    
     
     
     void Start()
@@ -25,6 +27,7 @@ public class RedactionScript : MonoBehaviour
         {
             blackSquare.enabled = true;
             isClicked = true;
+            audio.Play();
             // Call the points function
         }
         

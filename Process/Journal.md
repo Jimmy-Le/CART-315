@@ -1094,4 +1094,132 @@ There is a world event (Government Shutdown) that prevents the players from maki
 - And new day/ end day sound effects
 
 ----------------
+# Final Iterative Prototype | 02-04-2026 - 09-04-2026
 
+I believe this is the final journal and as of writting this, 
+I finished everything I wanted to do with the game (except implementing redact pictures).
+Lowkey, the final product is very different than what I first envisioned, but that is mostly because I forgot I can't draw and make music xd.
+
+You can check out the Final Project here!: [Redact Those Philes!](https://piploop.itch.io/redact-those-philes)
+
+## What I did
+
+Since I have a bunch of other school projects converging, I decided to spend a whole day just for implementing the final touches.
+
+- Wilted Flower Sticker
+- Clown Emoji Sticker
+- Main Menu
+- Main Menu Art
+- Main Menu Music
+- Button Click Sound
+- Page Flip Sound
+- New Day Sound Effect
+- Knocking sound effect
+- Gunshot sound effect
+- White noise sound
+- Voice sound effects
+- A small chance to get killed by the mafia when you don't listen to them
+- Make the background music stop during the summary screen
+- Switch Scenes Script (play some audio before switching)
+- Published to Itch.io :D
+
+## Why
+
+### Stickers
+
+I completely forgot my original artstyle while drawing the stickers, so the new ones are missing the black line art xd.
+I originally did only 2 frames for the stickers because I wasn't sure if I was going to use the built in Unity Animator or animate it by frames.
+Now that I know that I am using the animator and animation clips, it gives me more freedom to draw more frames for the stickers to make the animation smoother.
+
+### Sound Effects
+
+#### **Main Menu Music**
+  - I'm not entirely liking the music, but it works for repetitive listening (i think)
+  - I wanted to try to introduce some more pauses in the music instead of constant notes to give listeners a "break"
+  - I was originally inspired by the "Low Cortisol" meme which originates from [TIA](https://www.youtube.com/watch?v=apqe_u3VJQ4) and tried to reproduce the same beat.
+
+#### **Sound Effects (Voice, Gunshot)**
+  - Since these sound effects aren't easily reproducable with musical instruments, I decided to give Bfxr another chance.
+  - The sound effect for the gunshot was pretty good off the bat, I do wish to make it more intense and abrupt, but idk how to mess with the settings to do that.
+  - The voice was perfect for what I needed, I wanted a Golden Sun or Undertale dialog sound which is one note repeated multiple times. I slapped those sound into Audacity to create a "Sentence" and it works well.
+  
+#### **Clicking Sounds and Jingle**
+  - I simply used MuseScore Studio 4 and put a Note with a high pitch instrument. 
+  - I think putting too many instruments would make it sound too important for something short, so I kept those simple.
+
+#### Knocking, Page Flip, Whitenoise
+  - For the knocking I was inspired by those realistic knocking soundboard that makes it sound like the knocking is real, so I knocked on wood and recorded it.
+  - The page flip audio and whitenoise was recorded for a previous school project. 
+  - The white noise makes it less uncomfortable when the music stops during the summary and gives it an uncanny vibe that something is happening in the background.
+
+
+### Code
+  - There wasn't really much coding, the only things were bugfixes and setting up the Scene transistions
+  - I did add a bad ending where if a player does not engage with the Mafias request, they can get angry about that.
+    - Do I know if it works? No xd
+    - I also have no idea if the fired ending works because usually the corrupted path makes you go into debt and you die from the landlord.
+
+
+### Building the project
+  - Holy fuck this was cancerous
+  - I wanted to export as a Web Build, but whenever I tried switching, it would corrupt my audio files
+  - Thankfully, you can delete the Library Folder and the project should work when reopened, But I did this like over 30 times.
+  - Turns out the issue is that Linux doesn't come with a Audio converter software thingee, so I had to do the following to install the shitter
+    - `sudo apt update`
+    - `sudo apt install ffmpeg`
+  - After this it magically worked! After 3 Hours of figuring out the issue...
+  - Here is the finished project: 
+    - [Redact Those Philes!](https://piploop.itch.io/redact-those-philes)
+
+## What is next?
+
+Idk.
+
+If people offer suggestions to improve the game that is realistically doable, I can do those.
+If people find bugs I should be able to quickly make some hotfixes as well.
+Otherwise, I am quite happy at where it currently is and it is time to move on from my spaghetti code
+
+I could also consider particle systems to make little pellets fly out when you click and add the picture redacting which will take a whole other set of code.
+
+
+## Final Thoughts / Conclusion
+
+I am very happy with what I ended up with. The prototyping did help me to get a clear idea of what features I need, what it would look like
+and to plan out the timeline of where the project is heading.
+
+I think there was a lot of issues with my code where everything is in the game manager script, maybe I could've split it up into multiple singleton scripts.
+
+I also have a massive issue of working upside down :/
+
+I keep designing code that is used for waaaay later into the project, leaving very little current progress. It is also almost impossible to test the later code, and sometimes that code breaks the current code.
+On the bright side, it managed to speed up my workflow after a certain point, but it is very much an exponential curve of progress which might not be very good for short term projects like Game Jams.
+
+## BONUS: Shrekathon
+
+I didn't have time to write this down, but I did a GameJam with Nadia and other students!
+You can find the game here!: [Love Punch](https://nadiaabdulaziz.itch.io/punch-love)
+
+TL;DR, We tried using Unreal Engine 5, had a shit load of problems, got the game to work afterwards.
+
+### What is good about Unreal
+  - Very easy to work with other programmers (using blueprints)
+  - Very easy to debug blueprints
+  - Great Visuals 
+  - Easy Animation (with skeletons)
+
+### What is terrible about Unreal
+  - Very High learning floor 
+    - Need to learn what each node does
+    - A lot of features that you don't care about
+  - The blueprints are very messy, sometimes you forget to connect lines and don't know about it until later xd
+  - Very Heavy 
+  - Building the game took half an hour
+
+### Other Observations
+  - For Game Jams, we need 3 programmers, two that works on mechanics and levels, and one that helps with integration and putting stuff together.
+  - We also need a Game Designer person who does absolutely nothing but answer questions and keeping the team on track. Every question that gets answered by a developper or artist distracts them from their task, slowing down progress.
+  - Spending the first day prototyping out all the idea, visuals, and functions help a shit tone in getting things done without backtracking.
+
+Ok I think this is the end of the journal. Byebye.
+
+------------------
