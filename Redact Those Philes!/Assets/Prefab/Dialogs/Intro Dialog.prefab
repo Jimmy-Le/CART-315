@@ -51,13 +51,13 @@ MonoBehaviour:
   - 'Boss: Welcome on your first day on the job!'
   - 'Boss: Your task is very simple. Redact the words indicated on the list by clicking
     them!'
-  - 'Boss: If you ever have to redact pictures, drag a sticker on em and call it
-    a day! (Not Implemented Yet)'
-  - 'Boss: Careful to not wrongfully redact words or leave words unredacted, that
-    will come out of your paycheck!'
+  - 'Boss: Put stickers on documents before sending it off for a small bonus!'
+  - 'Boss: And be careful to not wrongfully redact words or leave words unredacted.
+    That will come out of your paycheck!'
   - 'Boss: Also, keep an eye out for World Events, they might affect how things work
     around here!'
-  - 'Boss: Alrighty, now go ahead and Redact Those Files!'
+  - 'Boss: Alrighty, now go ahead and... '
+  - REDACT THOSE FILES!
   voiceSound: {fileID: 127490205613484029}
   buttonSound: {fileID: 7562131689102787538}
   encounterMafia: 0

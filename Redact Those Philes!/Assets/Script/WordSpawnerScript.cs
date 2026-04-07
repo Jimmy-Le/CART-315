@@ -45,6 +45,7 @@ public class WordSpawnerScript : MonoBehaviour
                 newWord.transform.SetParent(null);
                 newWord.transform.localScale = Vector3.one;
                 newWord.transform.SetParent(spawnLocation);
+                
             }
             
         }

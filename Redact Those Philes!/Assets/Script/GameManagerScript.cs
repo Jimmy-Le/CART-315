@@ -17,6 +17,7 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField] public AudioSource newFileSound;
 	[SerializeField] public AudioSource knockingSound;
 	[SerializeField] public AudioSource endDaySound;
+	[SerializeField] public AudioSource stickerCollected;
 	
 
 	// Illegal Stuff
@@ -32,6 +33,8 @@ public class GameManagerScript : MonoBehaviour
 	// 2: Death Dialog
 	// 3: Bills Dialog
 	// 4: Fired Dialog
+	// 5: Intro Dialog
+	// 6: Ending Dialog
 	[SerializeField] public List<GameObject> dialogPrefabs =  new List<GameObject>();
 	[SerializeField] public GameObject currentDialogScene;
 	[SerializeField] public GameObject initializedDialog;
@@ -44,7 +47,7 @@ public class GameManagerScript : MonoBehaviour
 
     private string filename = "word_list";
 	private int baseWords = 2;
-	private int maxWords = 5;
+	private int maxWords = 4;
 
 	// Money Stats
 	public float balance = 200f;
@@ -71,6 +74,7 @@ public class GameManagerScript : MonoBehaviour
 	public int pageMax = 5;
 	public int pageLimit = 7;
 	public int pageBase = 5;
+	public int finalLevel = 10;
 	
 	// Player Stats
 	public int correctWords = 0;
@@ -78,7 +82,9 @@ public class GameManagerScript : MonoBehaviour
 	public int corruptionLevel = 0;
 	public bool isCorrupted = false;
 	public bool corruptionMistakes = false;
-	public bool encounteredMafia = false;	
+	public bool encounteredMafia = false;
+	public int stickerBonus = 0;
+	public float stickerValue = 2f;
 
 	// World Events
 	[SerializeField] private WorldEventScript[] worldEvents;
@@ -190,6 +196,7 @@ public class GameManagerScript : MonoBehaviour
 		mistakes = 0;
 		correctWords = 0;
 		donations = 0;
+		stickerBonus = 0;
 		ResetEvents();
 		Destroy(initializedDialog);
 		
@@ -198,6 +205,7 @@ public class GameManagerScript : MonoBehaviour
 
 		level++;
 		UIScript.instance.UpdateLevel();
+		UIScript.instance.UpdateBalanceIndicator();
 		
 		int maxBannedWords = System.Math.Min(maxWords, baseWords + (int) System.Math.Ceiling((double) (level / 2)));
 		pageMax = System.Math.Min(pageLimit, pageBase + (int)System.Math.Ceiling((double)(level / 3)));
@@ -232,12 +240,22 @@ public class GameManagerScript : MonoBehaviour
 	public void CalculatePoints()
 	{
 		GameObject[] page = GameObject.FindGameObjectsWithTag("Word");
+		
+		if (stickerFolder.transform.childCount > 0)
+		{
+			Debug.Log(stickerFolder.transform.childCount);
+			stickerBonus++;
+			stickerCollected.Play();
+		}
+		
 		foreach (GameObject word in page)
 		{
 			int wordID = word.GetComponent<WordSetupScript>().wordID;
 			bool isBanned = wordsToRedactID.Contains(wordID);
 			bool isIllegal = wordsToRedactIllegallyID.Contains(wordID);
 			bool isRedacted = word.GetComponent<RedactionScript>().IsRedacted();
+
+			
 
 			if(isBanned && isRedacted)											// If the player redacted a banned word, they get points
 			{
@@ -251,7 +269,7 @@ public class GameManagerScript : MonoBehaviour
 			if(isIllegal && isRedacted)											// If a player redacts an Illegal bribery word, it sets the player as corrupted and keeps track
 			{
 				isCorrupted = true;
-				corruptionLevel++;
+				corruptionLevel += 2;
 
 			} 
 			else if (isIllegal && !isRedacted && isCorrupted)					// If a player refuses to cooperate with the bribery or makes a mistake, consequences will happen
@@ -337,6 +355,7 @@ public class GameManagerScript : MonoBehaviour
 
 	public void CalculateProfit()
 	{
+		donations += (stickerBonus * stickerValue);
 		addToBalance = (pay * correctWords) + (penalty * mistakes) + donations + bills; 
 	}
 
@@ -414,13 +433,22 @@ public class GameManagerScript : MonoBehaviour
 	// 3: Bills Dialog (Guaranteed)
 	// 4: Fired Dialog (Dividable by 5)
 	// 5: Intro
+	// 6: Ending Dialog (After Day 10)
 	public void SetupDialogScene()
 	{
 		int randomChance = Random.Range(0, 100);
 		int dialogChoice = 0;
+		
+
 		if (balance + addToBalance < bills)
 		{
 			currentDialogScene = dialogPrefabs[3];	// Death by Bills
+			return;
+		}
+
+		if (level == finalLevel)			// victoryy
+		{
+			currentDialogScene = dialogPrefabs[6];
 			return;
 		}
 
@@ -432,13 +460,13 @@ public class GameManagerScript : MonoBehaviour
 		{
 			dialogChoice = 2;	// Death by Mafia
 		}
-		else if (randomChance % 4 == 0)
-		{
-			dialogChoice = 1;		// Bribery
-		}
 		else if (randomChance % 5 == 0 && !isCorrupted && encounteredMafia)	// Death by mafia if you are non corrupt
 		{
 			dialogChoice = 2;
+		}
+		else if (randomChance % 4 == 0)
+		{
+			dialogChoice = 1;		// Bribery
 		}
 
 		currentDialogScene = dialogPrefabs[dialogChoice];
@@ -493,6 +521,11 @@ public class GameManagerScript : MonoBehaviour
 	public void EndGame()
 	{
 		switchSceneScript.ChangeScene();
+	}
+
+	public void UpdateEndAudio()
+	{
+		switchSceneScript.ChangeAudio(endDaySound);
 	}
 
 }

@@ -51,4 +51,4 @@ MonoBehaviour:
   penaltyModifier: 0
   pageDurationModifier: 0
   donationsModifier: 0
-  billModifier: -20
+  billModifier: -50

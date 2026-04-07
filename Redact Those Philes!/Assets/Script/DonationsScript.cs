@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class DonationsScript : DialogSceneScript
 {
-    [SerializeField] public int maxIllegalWords = 3;
-    [SerializeField] public float donationMoney = 250f;
+    [SerializeField] public int maxIllegalWords = 2;
+    [SerializeField] public float donationMoney = 300f;
 
     public override void ContinueButtonAction()
     {

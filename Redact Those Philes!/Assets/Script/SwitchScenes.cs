@@ -20,6 +20,12 @@ public class SwitchScenes : MonoBehaviour
 		yield return new WaitForSeconds(audioSource.clip.length + additionalDelay);
 		SceneManager.LoadScene(sceneName);
 	}
+	
+	
+	public void ChangeAudio(AudioSource newAudio)
+	{
+		audioSource = newAudio;
+	}
 
 
 }

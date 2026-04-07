@@ -6,6 +6,7 @@ public class SummaryScript : MonoBehaviour
 	public static SummaryScript instance;
     [SerializeField] public GameObject summaryUI;
     [SerializeField] public GameObject summaryUIBlock;
+	[SerializeField] public TextMeshProUGUI dayEndText;
     [SerializeField] public TextMeshProUGUI balanceText;
     [SerializeField] public TextMeshProUGUI totalText;
     [SerializeField] public TextMeshProUGUI correctText;
@@ -41,12 +42,13 @@ public class SummaryScript : MonoBehaviour
     public void UpdateAllText()
     {
 		float newBalance = GameManagerScript.instance.balance + GameManagerScript.instance.addToBalance;
-        balanceText.text = "$ " + GameManagerScript.instance.balance;
-		totalText.text = "$ " + newBalance;
-		correctText.text = "$ " + GameManagerScript.instance.pay + " X " + GameManagerScript.instance.correctWords;
-		mistakesText.text = "$ " + GameManagerScript.instance.penalty + " X " + GameManagerScript.instance.mistakes;
-		donationText.text = "$ " + GameManagerScript.instance.donations;
-		billsText.text = "$ " + GameManagerScript.instance.bills;
+		dayEndText.text = "End of Day " + GameManagerScript.instance.level;
+        balanceText.text = GameManagerScript.instance.balance + " $";
+		totalText.text = newBalance + " $";
+		correctText.text = GameManagerScript.instance.correctWords + " X " + GameManagerScript.instance.pay + " $";
+		mistakesText.text = "- (" + GameManagerScript.instance.mistakes + " X " + Mathf.Abs(GameManagerScript.instance.penalty) + ") $";
+		donationText.text = GameManagerScript.instance.donations + " $";
+		billsText.text = GameManagerScript.instance.bills + " $";
 		
     }
 

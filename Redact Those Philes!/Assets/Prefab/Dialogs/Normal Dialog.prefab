@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NormalDialogScript
   dialog:
   - ...
-  - 'Boss: Keep up the good work today!'
+  - 'Boss: Keep up the good work today and don''t forget to check out what is happening
+    in the world!'
   voiceSound: {fileID: 9151651612848829828}
   buttonSound: {fileID: 2980354776631381007}
   encounterMafia: 0

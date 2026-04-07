@@ -14,6 +14,11 @@ public class WordSetupScript : MonoBehaviour
         wordID = GameManagerScript.instance.GenerateWordIndex();
 		wordUsed = GameManagerScript.instance.GetWord(wordID);
         wordText.text =  wordUsed;
+        bool isRedactionWord = GameManagerScript.instance.wordsToRedactID.Contains(wordID);
+
+        RedactionScript redactionScript = this.gameObject.GetComponent<RedactionScript>();
+        redactionScript?.SetBanned(!isRedactionWord);
+        
     }
 
 	public void SetWord(int newWordID)
@@ -21,6 +26,10 @@ public class WordSetupScript : MonoBehaviour
 		wordID = newWordID;
 		wordUsed = GameManagerScript.instance.GetWord(wordID);
 		wordText.text = wordUsed;
+		bool isRedactionWord = GameManagerScript.instance.wordsToRedactID.Contains(wordID);
+
+		RedactionScript redactionScript = this.gameObject.GetComponent<RedactionScript>();
+		redactionScript?.SetBanned(!isRedactionWord);
 	}
 
 

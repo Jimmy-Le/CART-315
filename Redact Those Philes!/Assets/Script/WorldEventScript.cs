@@ -23,9 +23,7 @@ public abstract class WorldEventScript : MonoBehaviour
         gm.ModifyPageDuration(pageDurationModifier);
         gm.ModifyDonations(donationsModifier);
         gm.ModifyBills(billModifier);
-        
-
-        
+     
         
         Debug.Log(eventName);
 

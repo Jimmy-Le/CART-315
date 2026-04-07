@@ -7,6 +7,7 @@ public class UIScript : MonoBehaviour
     public static UIScript instance;
     [SerializeField] private TextMeshProUGUI pageIndicator;
     [SerializeField] private TextMeshProUGUI timerIndicator;
+    [SerializeField] private TextMeshProUGUI balanceIndicator;
     
     [SerializeField] private TextMeshProUGUI levelIndicator;
 
@@ -24,6 +25,7 @@ public class UIScript : MonoBehaviour
         UpdateLevel();
         UpdatePages();
         UpdateEventPanel();
+        UpdateBalanceIndicator();
     }
 
     // Update is called once per frame
@@ -31,6 +33,11 @@ public class UIScript : MonoBehaviour
     {
         UpdateTimer();
         
+    }
+
+    public void UpdateBalanceIndicator()
+    {
+        balanceIndicator.text = "Balance: " + GameManagerScript.instance.balance + "$";
     }
 
     public void UpdateLevel()

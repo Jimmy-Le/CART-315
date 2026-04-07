@@ -1223,3 +1223,23 @@ TL;DR, We tried using Unreal Engine 5, had a shit load of problems, got the game
 Ok I think this is the end of the journal. Byebye.
 
 ------------------
+
+I lied.
+
+I made my friends test out my game and they had feedback and bug reports.
+
+## Changes
+- The end of day text was not updating.
+- The game was too long and boring later on (reduce the amount of page to be a fixed 5 page)
+- Needed more feedback for wrong answers (Redish outline and bad audio sounds)
+- Stickers were hella useless, so I made them give 5$ if there is at least 1 sticker on the file before submitting
+- They wanted to have the balance visible during gameplay
+- I also realized that the formula to calculate the landlord cutscene is wrong, but it kind of works out as it lets players try to make back money the nextday.
+  - tldr, instead of checking if the balance is below 0, i check if the balance is less than the bills (-100) so kind of double what you need to pay
+- I added a victory ending after 10 Days
+- Increased the odds that you die from mafia for not engaging with it
+- Updated endscreen so the visuals are more understandable
+
+And I think that is it. There will probably be a new journal after the playtest on thursday.
+
+-----------------

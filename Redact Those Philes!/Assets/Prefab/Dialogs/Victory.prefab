@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5309171583261058507
+--- !u!1 &8748995946929961564
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,77 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8520690915316961631}
-  - component: {fileID: 35904344717785411}
-  - component: {fileID: -4361587118321521727}
-  - component: {fileID: 7891328382019439163}
+  - component: {fileID: 5230627243504010697}
+  - component: {fileID: 1823180243183556072}
+  - component: {fileID: 6761845007650620798}
+  - component: {fileID: 2491876813079101990}
   m_Layer: 0
-  m_Name: Bribbery Dialog
+  m_Name: Victory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8520690915316961631
+--- !u!4 &5230627243504010697
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5309171583261058507}
+  m_GameObject: {fileID: 8748995946929961564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1567864, y: -4.441375, z: 0}
+  m_LocalPosition: {x: -4.4878526, y: -3.2025898, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35904344717785411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5309171583261058507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1435d1ee158293ed80a37a10faab8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DonationsScript
-  dialog:
-  - ...
-  - '???: ...'
-  - '???: Hey kid.'
-  - '???: How about ya do us a favor and cross out a few words for us eh?'
-  - '???: Here''s a little "donation" for your troubles... '
-  - '???: Make sure to keep this conversation "hush hush". And don''t even try to
-    cross us. I got my goons keepin an eye out on ya.'
-  voiceSound: {fileID: -4361587118321521727}
-  buttonSound: {fileID: 7891328382019439163}
-  encounterMafia: 1
-  maxIllegalWords: 2
-  donationMoney: 300
---- !u!82 &-4361587118321521727
+--- !u!82 &1823180243183556072
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5309171583261058507}
+  m_GameObject: {fileID: 8748995946929961564}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 9d608c9222d9fc2d98edc562bcc959b9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 723c99c4303cbc0139584023ccd2ac26, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.85
-  m_Pitch: 1
+  m_Pitch: 1.67
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 66
+  Priority: 82
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -156,13 +131,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7891328382019439163
+--- !u!82 &6761845007650620798
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5309171583261058507}
+  m_GameObject: {fileID: 8748995946929961564}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -253,3 +228,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2491876813079101990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748995946929961564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdf674f9d677f85db64ef530ff86a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VictoryDialogScript
+  dialog:
+  - ...
+  - You survived for 10 Days!
+  - You Win!
+  - ...
+  voiceSound: {fileID: 1823180243183556072}
+  buttonSound: {fileID: 6761845007650620798}
+  encounterMafia: 0
