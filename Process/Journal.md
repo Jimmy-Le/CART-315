@@ -1242,4 +1242,65 @@ I made my friends test out my game and they had feedback and bug reports.
 
 And I think that is it. There will probably be a new journal after the playtest on thursday.
 
------------------
+-----------
+
+# Actual Final Journal (For Realsies) | 09-04-2026 - 16-04-2026
+
+I thought the last week was the final journal so I already wrote out my thoughts there xd.
+
+## Final Prototype
+
+My final prototype was basically 90% of what I originally thought about. 
+The only thing missing is the Photo Redaction feature, which is doable, but will be more work for me :/
+
+I believe that I was definitely inspired by the examples in class and the prototyping that I have done for my Game Jams during the process of this project.
+
+- I used the spawner code from the brick break to generate the words in rows and columns
+- I believe that I started off the project by drawing what I was thinking and writting down all the classes, attributes and systems that I needed on "paper". While there were more things added, I think it gave me a strong foundation which is what I was struggling with before starting this class.
+
+## What Kind of Prototypes?
+
+I am mostly leaning towards look/feel prototypes and Implementation prototypes.
+
+I like Look/Feel because If I can visualize and imagine things, I can implement it.
+While Implementation prototypes, I am mainly a programmer so I think about things in code already.
+
+I lowkenuinely have no idea how to do a Role prototype without it just being a Look/Feel with extra steps, so I do that by accident. I sometimes write down scripted events for game ideas, so I think that kinda counts?
+
+## What I focused my efforts on
+
+I think I mostly focused my efforts on making my code adaptable to new changes.
+A lot of my previous code from school project often end up looking like spaghetti, and having to keep adding "exceptions" to the code for every new feature.
+In this project, at the end there was a lot of exceptions when encorporating world events.
+
+- Since the world events modify game stats (penalties, time, pay, bills...), they needed access to those variables, and more importantly those stats needed to get reset.
+- So if I wanted to create a world event that affects a stat that is not set up to be easily accessible, I need to create a whole new function and set up the Reset.
+- Ideally, For the reset, I would make the base world Event have a "Reset" function that runs after the day is over so I don't have to manually reset all variables. The only issue is that what does it reset to? I could have a "base stat" but that would still require me to create unique base variables to accomodate it.
+- I am thinking as I am writting, so a solution I believe should work is that the World Event would snapshot the current stats, and revert it to that afterwards. This can have issues where the snapshotted stat is not the "base", but If implemented carefully, it should work.
+
+
+
+## Other Stuff
+
+Everything that I published is working so far. 
+- There were some concerns about the hitbox for the words being too small and the game is not punishing enough for players who do well.
+- I also considered adding in a "Quick Play" which will only go up to 5 Days, but have harsher penalties.
+- I also considered adding more dialog events like the landlord asking for more money
+
+
+## Final Conclusion
+
+Before taking this class, I struggled with getting overwhelmed by all the different systems, assets, game engine and don't know where to start. I also thought prototyping was stupid and a waste of time, because instead of drawing things or writting stuff down, you could be working on it instead.
+
+When actively trying out prototyping for a Game Jam, it significantly made the process so much easier and a lot less restarting. I believe in the prototype propaganda now!!!
+
+For the Shrekathon as well, we spent like 4 hours writting **Everything** on a white board, from the scenes, game mechanics, theme integration, assets needed, visuals, audio cues, characters, UI, etc...
+It went very smoothly in terms of what we wanted / needed with little confusion, especially in a team that we had never worked with before. The only issues was that we were using Unreal Engine where we were complete beginners and a bit slower on that count.
+
+For the idea exchange activity, I think that was pretty fun as well, I got to talk to Bianca about some unholy game, that would in theory work really well if executed properly.
+
+## Future stuff
+
+I haven't had time to implement any changes yet, but I will probably work on it a bit more in the following weeks then let it die off.
+
+And that it :D
